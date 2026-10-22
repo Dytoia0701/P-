@@ -1,0 +1,103 @@
+Subject,Existing topic index,Existing topic title,Likely specification area (first-pass),Audit status,Review note
+Chemistry,1,Moles & Titrations,Module 1: practical skills (also linked content),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,2,Atomic Structure & Electron Configuration,Module 2: foundations in chemistry,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,3,"Ionic & Covalent Bonding, Shapes",Module 2: foundations in chemistry,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,4,"Electronegativity, Polarity & Intermolecular Forces",Module 2: foundations in chemistry,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,5,Redox & Oxidation Numbers,Module 2: foundations in chemistry,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,6,Enthalpy & Hess's Law,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,7,Periodicity & Ionisation Energy,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,8,Group 2 Chemistry,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,9,The Halogens,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,10,Qualitative Analysis: Tests for Ions,Module 1: practical skills (also linked content),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,11,Reaction Rates & Catalysts,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,12,Alkenes & Reaction Mechanisms,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,13,Alcohols,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,14,Haloalkanes,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,15,IR Spectroscopy & Mass Spectrometry,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,16,Equilibrium: Kc & Kp,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,17,"pH, Buffers & Acids/Bases",Cross-module / verify mapping,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,18,Entropy & Free Energy,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,19,Lattice Enthalpy & Born-Haber Cycles,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,20,Transition Elements,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,21,Electrode Potentials & Redox Titrations,Module 1: practical skills (also linked content),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,22,Arenes (Aromatic Compounds),Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,23,Carbonyls: Aldehydes & Ketones,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,24,Carboxylic Acids & Esters,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,25,"Amines, Amino Acids & Chirality",Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,26,Polymers,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,27,"Additional Physical Chemistry: Rates, Equilibria & Redox",Module 2: foundations in chemistry,Topic group exists; point-by-point coverage NOT YET VERIFIED,Supplementary/deepening topic: map each point to the numbered specification
+Chemistry,28,"Organic Synthesis, Purification & Analysis",Module 1: practical skills (also linked content),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Chemistry,29,"Rate Equations, Orders & Half-life",Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,Supplementary/deepening topic: map each point to the numbered specification
+Chemistry,30,Equilibrium Calculations & Kc Expressions,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,Supplementary/deepening topic: map each point to the numbered specification
+Chemistry,31,"Ka, pH & Weak-acid Calculations",Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,Supplementary/deepening topic: map each point to the numbered specification
+Chemistry,32,Electrochemical Cells & Standard Potentials,Module 3 / 5: physical & inorganic (verify overlap),Topic group exists; point-by-point coverage NOT YET VERIFIED,Supplementary/deepening topic: map each point to the numbered specification
+Chemistry,33,Organic Synthesis Routes & Reagents,Module 4 / 6: organic chemistry and analysis,Topic group exists; point-by-point coverage NOT YET VERIFIED,Supplementary/deepening topic: map each point to the numbered specification
+Chemistry,34,"Practical Skills: Rates, Titrations & Analysis",Module 1: practical skills (also linked content),Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,1,Biological Molecules: Carbs & Lipids,Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,2,Biological Molecules: Proteins & Enzymes,Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,3,Cell Structure & Ultrastructure,Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,4,The Cell Cycle & Division,Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,5,Nucleotides & Nucleic Acids,Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,6,Cell Membranes & Transport,Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,7,Exchange Surfaces & Gas Exchange,Module 3: exchange and transport,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,8,Transport in Animals,Module 3: exchange and transport,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,9,Transport in Plants,Module 3: exchange and transport,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,10,Communicable Disease & Immunity,"Module 4: biodiversity, evolution and disease",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,11,"Biodiversity, Classification & Sampling",Module 1: practical skills / maths,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,12,"Natural Selection, Evolution & Speciation","Module 4: biodiversity, evolution and disease",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,13,Neuronal Communication,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,14,Hormonal Communication & Homeostasis,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,15,Homeostasis & Excretion,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,16,Plant & Animal Responses,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,17,Photosynthesis,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,18,Respiration,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,19,Patterns of Inheritance & Genetics,"Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,20,Cellular Control & Gene Expression,"Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,21,Manipulating Genomes,"Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,22,Cloning & Biotechnology,"Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,23,Ecosystems,"Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,24,Populations & Sustainability,"Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,25,"Oxygen Transport, Immunity & Disease",Module 3: exchange and transport,Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,26,"Gene Expression, Epigenetics & Evolution","Module 4: biodiversity, evolution and disease",Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,27,"Microscopy, Cell Fractionation & Calculations",Module 1: practical skills / maths,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,28,"Membranes, Transport & Water Potential",Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Biology,29,"Enzymes, ATP & Metabolic Control",Module 2: foundations in biology,Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,30,"The Heart, Circulation & Oxygen Transport",Module 3: exchange and transport,Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,31,Photosynthesis: Light-dependent & Calvin Cycle,"Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,32,"Respiration, ATP Yield & Metabolic Pathways","Module 5: communication, homeostasis and energy",Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,33,"Inheritance, Chi-squared & Genetic Diagrams","Module 6: genetics, evolution and ecosystems",Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,34,"Ecology, Sampling & Population Estimates",Module 1: practical skills / maths,Topic group exists; point-by-point coverage NOT YET VERIFIED,Potential overlap/duplicate: compare with core topic and avoid double-counting
+Biology,35,"Practical Skills, Statistics & Evaluation",Module 1: practical skills / maths,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,1,Algebra & Functions,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,2,Coordinate Geometry,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,3,Trigonometric Identities & Equations,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,4,"Sequences, Series & Binomial Expansion",Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,5,Differentiation,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,6,Integration,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,7,Kinematics (SUVAT),Paper 3: Mechanics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,8,Forces & Newton's Laws,Paper 3: Mechanics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,9,Vectors,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,10,Statistical Sampling,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,11,Data Presentation & Interpretation,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,12,Probability,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,13,Statistical Distributions,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,14,Hypothesis Testing,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,15,"Proof, Exponentials, Logarithms & Partial Fractions",Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,Check against 9MA0 wording; retain extras as clearly labelled extension if beyond spec
+Maths,16,"Mechanics: Projectiles, Moments & Friction",Paper 3: Mechanics,Topic group exists; point-by-point coverage NOT YET VERIFIED,Check against 9MA0 wording; retain extras as clearly labelled extension if beyond spec
+Maths,17,"Statistics: Correlation, Regression & Normal Models",Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,18,"Radians, Small-angle Approximations & Trigonometry",Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,Check against 9MA0 wording; retain extras as clearly labelled extension if beyond spec
+Maths,19,Integration Techniques & Differential Equations,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,Check against 9MA0 wording; retain extras as clearly labelled extension if beyond spec
+Maths,20,Parametric Equations & Implicit Differentiation,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,21,Numerical Methods & Iteration,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,22,"Work, Energy, Power & Connected Particles",Paper 3: Mechanics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,23,Large Data Set & Statistical Sampling,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,24,Binomial Distribution & Hypothesis Tests,Paper 3: Statistics,Topic group exists; point-by-point coverage NOT YET VERIFIED,
+Maths,25,Vectors in 2D & 3D and Lines,Papers 1 & 2: Pure Mathematics,Topic group exists; point-by-point coverage NOT YET VERIFIED,Check against 9MA0 wording; retain extras as clearly labelled extension if beyond spec
+Chemistry,35,A* Specification Gap-Fill: Quantitative Chemistry & Mathematical Skills,Modules 1–5: quantitative and mathematical skills,Supplement added; specification-point mapping still in progress,"Includes core formulae, titration worked example, uncertainty and calculation checks."
+Chemistry,36,"A* Specification Gap-Fill: Practical Chemistry, Uncertainty & Evaluation",Module 1: practical skills,Supplement added; practical-by-practical verification still required,"Method patterns, apparatus, uncertainty, safety, data quality and evaluation."
+Chemistry,37,"A* Specification Gap-Fill: Organic Routes, Mechanisms & Spectra",Modules 4 and 6: organic chemistry,Supplement added; reaction-by-reaction verification still required,"Routes, reagents/conditions, purification and analytical evidence."
+Biology,36,A* Specification Gap-Fill: Practical Biology & Experimental Design,Module 1: practical skills,Supplement added; specification-point mapping still in progress,"Variables, microscopy calculations, statistics and data interpretation."
+Biology,37,A* Specification Gap-Fill: Required Practical Methods & Evaluation,Module 1: practical endorsement and written practical skills,Supplement added; individual OCR PAG verification still required,Core methods and evaluation framework; cross-check against current OCR guidance.
+Biology,38,A* Specification Gap-Fill: Synoptic Biology & High-Precision Explanations,Modules 2–6: synoptic links,Supplement added; objective mapping still in progress,Mechanistic chains and high-mark answer techniques across modules.
+Chemistry,38,"A* Specification Gap-Fill: Inorganic Reactions, Observations & Tests",Modules 2–5: inorganic chemistry and practical analysis,Supplement added; full qualitative-analysis list still needs verification,"Targeted tests, observations, equations, periodic trends and redox reasoning."
+Biology,39,A* Specification Gap-Fill: Frequently Missed Biology Detail,Modules 2–6: targeted specification points,Supplement added; point-by-point mapping still required,"Fibrous proteins, blood cells, immunity, ECG, plant hormones, chemiosmosis and biotechnology."

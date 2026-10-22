@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bridge Protocol">
+<meta name="theme-color" content="#090d12">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<script>try{var a=JSON.parse(localStorage.getItem("bp_appearance_v1")||"{}"),t=a.theme==="light"||(a.theme==="system"&&matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";document.documentElement.dataset.theme=t;var z={large:1.12,xl:1.25}[a.text];if(z)document.documentElement.style.zoom=z;}catch(e){}</script>
+<title>Bridge Protocol — Whole-Life OS v38</title>
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --bg:#090d12; --btn:#1b2938; --panel2:#0d141d; --input:#0a1119; --text2:#dbe7f2; --hair:rgba(255,255,255,.1); --red-text:#f87171; --amber-text:#fbbf24; --green-text:#4ade80; --viz-1:#3987e5; --on-blue:#06121f; --viz-2:#c98500; --surface-tint:#111923; --card:#111923; --text:#edf3f8; --muted:#8b9aaa;
+    --red:#ff5a52; --blue:#53a7ff; --line:rgba(148,163,184,.18); --panel:#0d141d; --green:#52d6a0; --amber:#f6c453;
+  }
+  html{ padding-top:env(safe-area-inset-top,0px); }
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding-bottom:100px; -webkit-tap-highlight-color:transparent;
+  }
+  ::-webkit-scrollbar{ display:none; }
+  header{
+    position:sticky; top:0; z-index:10; padding:10px 16px 0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  header h1{ margin:0; font-size:19px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+  header p{ margin:4px 0 0; font-size:12px; color:var(--muted); }
+  main{ padding:16px; }
+  .hidden{ display:none !important; }
+
+  .card{ background:var(--card); border-radius:16px; padding:16px; margin-bottom:12px; }
+  .day-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .day-header h3{ margin:0; font-size:15px; font-weight:600; }
+  .mode-toggle{ display:flex; background:var(--input); border-radius:999px; padding:2px; }
+  .mode-toggle button{ border:none; background:transparent; color:var(--muted); padding:6px 12px; border-radius:999px; font-size:12px; font-weight:500; }
+  .mode-toggle button.active-train{ background:var(--red); color:#fff; }
+  .mode-toggle button.active-study{ background:var(--blue); color:var(--on-blue); }
+  .block-title{ font-size:14px; font-weight:500; color:var(--text2); margin:0 0 6px; }
+  .block-list{ margin:0; padding-left:18px; font-size:12px; color:var(--muted); }
+  .block-list li{ margin-bottom:3px; }
+
+  nav{
+    position:fixed; bottom:0; left:0; right:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:4px;
+    background:var(--bg); border-top:1px solid var(--line);
+    padding:7px 8px max(8px, env(safe-area-inset-bottom)); z-index:30;
+  }
+  nav button{ background:none; border:1px solid transparent; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:10px; color:var(--muted); padding:6px 3px; min-width:0; width:100%; min-height:48px; border-radius:11px; white-space:nowrap; }
+  nav button.tab-active{ color:var(--red); background:rgba(255,90,82,.09); border-color:rgba(255,90,82,.22); }
+  nav button span{ font-size:18px; line-height:1.1; }
+  .section-menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:39;display:flex;align-items:flex-end;justify-content:center;padding:12px 12px max(12px,env(safe-area-inset-bottom));}
+  .section-menu-backdrop.hidden{display:none!important}
+  .section-menu{width:min(100%,720px);max-height:min(78dvh,720px);overflow:auto;background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 20px 70px rgba(0,0,0,.5);}
+  .section-menu-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .section-menu-head h2{font-size:17px;margin:0}.section-menu-close{background:var(--hair);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:8px 12px}
+  .section-menu-search{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--text);font:inherit;margin-bottom:14px}
+  .section-menu-group{margin:12px 0 16px}.section-menu-group h3{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  .section-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .section-menu-item{display:flex;align-items:center;gap:10px;text-align:left;background:var(--btn);border:1px solid var(--line);border-radius:12px;padding:12px;color:var(--text);font-size:13px;min-width:0}
+  .section-menu-item span:first-child{font-size:18px;width:24px;text-align:center}.section-menu-item[aria-current="page"]{border-color:rgba(255,90,82,.6);background:rgba(255,90,82,.1)}
+  .section-menu-item small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+  .section-menu-empty{display:none;color:var(--muted);font-size:12px;padding:12px}
+  .global-search-backdrop{position:fixed;inset:0;z-index:45;background:rgba(0,0,0,.72);display:flex;align-items:flex-start;justify-content:center;padding: max(8vh,28px) 12px max(12px,env(safe-area-inset-bottom));}
+  .global-search-backdrop.hidden{display:none!important}
+  .global-search-panel{width:min(100%,760px);max-height:82dvh;overflow:auto;background:var(--panel2);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 20px 70px rgba(0,0,0,.55)}
+  .global-search-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.global-search-head h2{font-size:16px;margin:0}
+  .global-search-input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px;color:var(--text);font:inherit;outline-offset:2px}
+  .global-search-hint{font-size:11px;color:var(--muted);margin:8px 2px 12px}.global-search-results{min-height:30px}.global-search-result{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--hair);border-radius:11px;padding:11px;margin:0 0 7px;color:var(--text)}.global-search-result-title{display:block;font-size:13px;font-weight:700;margin-bottom:3px}.global-search-result-location{display:block;color:var(--red-text);font-size:10px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}.global-search-result-snippet{display:block;font-size:12px;color:var(--text2);line-height:1.4;overflow-wrap:anywhere}
+  @media(min-width:700px){main{max-width:900px;margin:0 auto}nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,720px);border:1px solid var(--line);border-bottom:0;border-radius:18px 18px 0 0}.section-menu-backdrop{align-items:center}.section-menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+  .timer-card{ text-align:center; }
+  .timer-display{ font-size:56px; font-weight:700; font-family:ui-monospace,Menlo,monospace; margin:0 0 16px; }
+  .timer-display.done{ color:var(--red); }
+  .timer-controls{ display:flex; justify-content:center; gap:10px; }
+  .btn{ border:none; border-radius:999px; padding:10px 20px; font-size:14px; font-weight:600; color:#fff; }
+  .btn-primary{ background:var(--red); }
+  .btn-secondary{ background:var(--hair); color:var(--text); }
+
+  .preset-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
+  .preset-grid button{ background:var(--card); border:none; border-radius:16px; padding:14px; font-size:13px; font-weight:600; color:var(--text); text-align:left; }
+
+  .custom-row{ display:flex; gap:8px; align-items:center; background:var(--card); border-radius:16px; padding:10px; }
+  .custom-row input{ flex:1; background:var(--input); border:1px solid var(--hair); border-radius:12px; padding:10px 12px; color:var(--text); font-size:14px; }
+  .custom-row .btn{ padding:10px 16px; white-space:nowrap; }
+
+  .checklist-hint{ font-size:12px; color:var(--muted); margin-bottom:12px; }
+  .check-row{ display:flex; align-items:flex-start; gap:10px; }
+  .check-row input{ margin-top:2px; width:20px; height:20px; accent-color:var(--red); flex-shrink:0; }
+  .check-row span.done{ text-decoration:line-through; color:var(--muted); }
+  .reset-btn{ width:100%; background:var(--card); border:none; border-radius:16px; padding:12px; color:var(--text2); font-size:14px; font-weight:500; margin-top:4px; }
+
+  .offline-badge{ display:none; font-size:11px; color:var(--green-text); margin-top:2px; }
+  .offline-badge.show{ display:block; }
+
+  .subject-tabs{ display:flex; gap:8px; margin-bottom:12px; }
+  .subject-tabs button{ flex:1; background:var(--card); border:none; border-radius:12px; padding:10px 4px; font-size:13px; font-weight:600; color:var(--muted); }
+  .subject-tabs button.active-subject{ background:var(--red); color:#fff; }
+  .note-card{ background:var(--card); border-radius:16px; margin-bottom:10px; overflow:hidden; }
+  .notes-search{background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:12px;margin:0 0 14px;}
+  .notes-search label{display:block;font-size:12px;color:var(--muted);margin:0 0 7px;font-weight:600;}
+  .notes-search-row{display:flex;gap:8px;}
+  .notes-search input{flex:1;min-width:0;background:var(--input);border:1px solid var(--hair);border-radius:10px;padding:12px;color:var(--text);font:inherit;font-size:14px;}
+  .notes-search button{border:0;border-radius:10px;background:var(--hair);color:var(--text);padding:0 13px;font-weight:600;}
+  .notes-search-help{font-size:11px;color:var(--muted);margin:8px 0 0;line-height:1.45;}
+  .search-results{margin:0 0 14px;}
+  .search-result{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:12px;margin:0 0 8px;color:var(--text);}
+  .search-result-title{display:block;font-size:13px;font-weight:700;margin-bottom:4px;}
+  .search-result-location{display:block;color:var(--red-text);font-size:11px;font-weight:700;margin-bottom:5px;}
+  .search-result-snippet{display:block;font-size:12px;color:var(--text2);line-height:1.45;overflow-wrap:anywhere;}
+  .search-empty{font-size:12px;color:var(--muted);padding:10px 2px;}
+  .search-target{outline:2px solid var(--blue);outline-offset:2px;}
+  .note-card-header{ display:flex; justify-content:space-between; align-items:center; padding:14px 16px; }
+  .note-card-header h4{ margin:0; font-size:14px; font-weight:600; }
+  .note-card-header .chev{ color:var(--muted); font-size:12px; transition:transform .2s; flex-shrink:0; margin-left:10px; }
+  .note-card-header .chev.open{ transform:rotate(180deg); }
+  .note-body{ padding:0 16px 14px; }
+  .note-body ul{ margin:0; padding-left:18px; font-size:12.5px; color:var(--text2); line-height:1.55; }
+  .note-body li{ margin-bottom:7px; }
+  .note-body li.astar{ color:var(--amber-text); list-style:none; margin-left:-18px; padding-top:4px; border-top:1px dashed var(--hair); margin-top:4px; }
+  .note-subhead{ font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--red-text); margin:14px 0 6px; }
+  .note-body .note-subhead:first-child{ margin-top:0; }
+  ul.astar-list{ margin-top:2px; }
+  ul.astar-list li{ color:var(--amber-text); list-style:none; margin-left:-18px; padding:6px 0 0; border-top:1px dashed var(--hair); margin-top:6px; }
+  .group-heading{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:18px 2px 8px; }
+  .group-heading:first-child{ margin-top:0; }
+
+  .add-note-btn{ width:100%; background:var(--red); border:none; border-radius:16px; padding:13px; color:#fff; font-size:14px; font-weight:600; margin-bottom:12px; }
+  .note-form{ background:var(--card); border-radius:16px; padding:14px; margin-bottom:12px; }
+  .note-form input, .note-form textarea{ width:100%; background:var(--input); border:1px solid var(--hair); border-radius:10px; padding:10px 12px; color:var(--text); font-size:14px; margin-bottom:10px; font-family:inherit; box-sizing:border-box; }
+  .note-form textarea{ min-height:120px; resize:vertical; line-height:1.4; }
+  .note-form-actions{ display:flex; gap:8px; }
+  .custom-note-body{ white-space:pre-wrap; font-size:13px; color:var(--text2); line-height:1.55; margin:0; }
+  .custom-note-actions{ display:flex; gap:8px; margin-top:12px; }
+  .icon-btn{ background:var(--hair); border:none; border-radius:10px; padding:8px 16px; font-size:12px; color:var(--text2); font-weight:600; }
+  .icon-btn.danger{ color:var(--red-text); }
+
+  .test-card{ background:var(--card); border-radius:16px; padding:16px; margin-bottom:12px; }
+  .test-topic{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin:0 0 8px; }
+  .test-question{ font-size:15px; color:var(--text); line-height:1.5; margin:0 0 8px; }
+  .test-marks{ font-size:12px; color:var(--red); font-weight:600; margin:0; }
+  #testAnswer{ width:100%; min-height:140px; background:var(--input); border:1px solid var(--hair); border-radius:12px; padding:12px; color:var(--text); font-size:14px; font-family:inherit; box-sizing:border-box; margin-bottom:12px; resize:vertical; }
+  #testAnswer[readonly]{ opacity:.7; }
+  .test-result{ background:var(--card); border-radius:16px; padding:16px; margin-bottom:12px; }
+  .test-score{ font-size:30px; font-weight:700; margin:0 0 2px; }
+  .test-verdict{ font-size:13px; color:var(--amber-text); font-weight:600; margin:0 0 14px; }
+  .test-feedback{ list-style:none; margin:0 0 14px; padding:0; }
+  .test-feedback li{ font-size:13px; padding:7px 0; border-bottom:1px dashed var(--hair); }
+  .test-feedback li.hit{ color:var(--green-text); }
+  .test-feedback li.miss{ color:var(--red-text); }
+  .test-model{ font-size:13px; color:var(--text2); line-height:1.5; margin:0; }
+
+  .mc-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+  .mc-field label{ display:block; font-size:11px; color:var(--muted); margin:0 0 4px; text-transform:uppercase; letter-spacing:.04em; }
+  .mc-field input, .mc-field select{ width:100%; background:var(--input); border:1px solid var(--hair); border-radius:10px; padding:10px 12px; color:var(--text); font-size:15px; font-family:inherit; box-sizing:border-box; }
+  .mc-toggle{ display:flex; background:var(--input); border-radius:999px; padding:2px; margin-bottom:10px; }
+  .mc-toggle button{ flex:1; border:none; background:transparent; color:var(--muted); padding:8px 4px; border-radius:999px; font-size:12px; font-weight:600; }
+  .mc-toggle button.on{ background:var(--red); color:#fff; }
+  .mc-error{ color:var(--red-text); font-size:13px; margin:0 0 12px; }
+  .mc-warn{ color:var(--amber-text); font-size:12px; line-height:1.5; margin:8px 0 0; }
+  .macro-hero{ text-align:center; }
+  .macro-hero .big{ font-size:44px; font-weight:700; margin:0; }
+  .macro-hero .sub{ font-size:12px; color:var(--muted); margin:2px 0 0; }
+  .macro-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:12px 0; }
+  .macro-card{ background:var(--card); border-radius:14px; padding:12px 6px; text-align:center; }
+  .macro-card .num{ font-size:22px; font-weight:700; margin:0; }
+  .macro-card .lbl{ font-size:11px; color:var(--muted); margin:2px 0 0; text-transform:uppercase; letter-spacing:.04em; }
+  .macro-card .kc{ font-size:11px; color:var(--muted); margin:2px 0 0; }
+  .macro-bar{ display:flex; height:12px; border-radius:999px; overflow:hidden; margin:6px 0 8px; background:var(--hair); }
+  .macro-bar div{ height:100%; }
+  .macro-legend{ display:flex; justify-content:space-between; font-size:11px; color:var(--muted); }
+  .macro-notes{ margin:0; padding-left:18px; font-size:12.5px; color:var(--text2); line-height:1.55; }
+  .macro-notes li{ margin-bottom:6px; }
+
+  .eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:800;margin:0 0 8px}
+  .view-title{font-size:24px;line-height:1.1;margin:0 0 5px;font-weight:800;letter-spacing:-.03em}
+  .view-subtitle{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 16px}
+  .command-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:12px}
+  .metric-card{background:linear-gradient(145deg,#152130,var(--panel2));border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
+  .metric-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700}
+  .metric-value{font-size:28px;font-weight:800;letter-spacing:-.04em;margin:6px 0 2px}
+  .metric-detail{font-size:11px;color:var(--muted)}
+  .section-kicker{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:800;color:var(--text2);margin:20px 2px 10px}
+  .section-kicker button{font-size:11px;color:var(--green);background:transparent;border:0;padding:4px}
+  .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .field{margin-bottom:10px;min-width:0}
+  .field label{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;font-weight:700}
+  .field input,.field select,.field textarea{width:100%;min-width:0;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;font-size:13px}
+  .field textarea{min-height:72px;resize:vertical}
+  .form-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+  .action-row{display:flex;gap:8px;flex-wrap:wrap}
+  .action-row .btn{flex:1;min-width:100px}
+  .btn-green{background:#167d60;color:#effff8}
+  .task-item,.project-item,.mini-item{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px}
+  .task-check{width:20px;height:20px;accent-color:var(--green);margin:1px 0 0;flex-shrink:0}
+  .item-main{flex:1;min-width:0}
+  .item-title{font-size:13px;font-weight:700;line-height:1.4;overflow-wrap:anywhere}
+  .item-meta{font-size:10px;color:var(--muted);line-height:1.5;margin-top:4px}
+  .item-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+
+
+  /* v32 navigation */
+  .hdr-row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:36px}
+  header h1{font-size:16px}
+  .hdr-btn{background:var(--btn);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:8px 14px;font-size:13px;min-height:36px}
+  .hub-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:8px -16px 0;padding:0 16px 10px;scroll-behavior:smooth}
+  .hub-tabs::-webkit-scrollbar{display:none}
+  .hub-tab{flex:0 0 auto;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:8px 14px;font-size:13px;min-height:38px;white-space:nowrap}
+  .hub-tab.active{background:var(--text);border-color:var(--text);color:var(--bg);font-weight:700}
+  .link-btn{background:none;border:none;color:var(--blue);padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+  /* v37: let the browser skip laying out long lists that are off screen (big task lists, 80+ note topics, 290 spec rows) */
+  .task-item,.note-card,.spec-row,.global-search-result{content-visibility:auto;contain-intrinsic-size:auto 72px}
+  /* v38 music */
+  .hdr-actions{display:flex;gap:8px;align-items:center}
+  .hdr-music{min-width:40px;padding:8px 12px;font-size:16px;line-height:1}
+  .music-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--hair)}
+  .music-info{min-width:0;flex:1}
+  .music-name{font-weight:700;overflow-wrap:anywhere}
+  .music-meta{color:var(--muted);font-size:12px;margin-top:2px}
+  .music-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  a.music-play{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:40px;padding:8px 14px;border-radius:999px}
+  .music-del{color:var(--red-text)}
+  .music-form{margin-top:14px}
+  .music-form-title{margin:0 0 8px;font-size:14px}
+  .music-msg{color:var(--amber-text);font-size:13px;min-height:1em;margin:6px 0}
+  .music-opt{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);margin:14px 0 6px}
+  .music-home{display:inline-block;margin-top:6px}
+  .music-toast{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:40;display:none;align-items:center;gap:10px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:0 12px 40px rgba(0,0,0,.45);max-width:560px;margin:0 auto}
+  .music-toast.show{display:flex}
+  .music-toast-label{color:var(--muted);font-size:12px;white-space:nowrap}
+  .music-toast-play{flex:1;min-width:0;color:var(--blue);font-weight:700;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:6px 0}
+  .music-toast-x{background:none;border:none;color:var(--muted);font-size:16px;min-width:36px;min-height:36px}
+  .ext-links{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-size:13px;margin:4px 0 10px}
+  .ext-links a{color:var(--blue);text-decoration:underline;padding:4px 0}
+  .ext-label{color:var(--muted);font-size:12px}
+  .spec-qline{margin-top:4px;font-size:13px}
+  .row-actions{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+  .row-actions button{background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:10px;padding:10px 14px;font-size:13px;min-height:40px}
+  nav button{min-height:52px}
+
+  /* v32 features */
+  .seg{display:flex;gap:4px;background:var(--input);border:1px solid var(--line);border-radius:12px;padding:3px;margin:6px 0 12px}
+  .seg-btn{flex:1;background:transparent;border:none;color:var(--muted);border-radius:9px;padding:9px 4px;font-size:13px;min-height:38px}
+  .seg-btn.on{background:var(--btn);color:var(--text);font-weight:700;box-shadow:inset 0 0 0 1px var(--line)}
+  .checkin-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 12px}
+  .checkin-title{font-size:13px;font-weight:700;margin:0 0 8px}
+  .checkin-row{display:flex;align-items:center;gap:8px;margin-top:6px}.checkin-row .seg{flex:1;margin:0}
+  .checkin-label{width:72px;flex:0 0 72px;font-size:12px;color:var(--muted)}
+  .checkin-hint{font-size:11px;color:var(--muted);margin:2px 0 4px 80px}
+  .checkin-acts{display:flex;gap:8px;margin-top:12px}.checkin-acts .btn:disabled{opacity:.45}.checkin-acts button:not(.btn){background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:999px;padding:10px 16px}
+  .checkin-val{min-width:58px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+  .step-btn{width:42px;height:38px;border-radius:10px;background:var(--btn);border:1px solid var(--line);color:var(--text);font-size:18px}
+  .checkin-done{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px}
+  .checkin-badge{font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px;border:1px solid var(--line)}
+  .checkin-badge.r-good{color:var(--green-text)}.checkin-badge.r-ok{color:var(--text2)}.checkin-badge.r-low{color:var(--amber-text)}
+  .checkin-sum{color:var(--muted);flex:1;min-width:160px}
+  .today-pill,.edited-pill{display:inline-block;margin-left:8px;font-size:10px;letter-spacing:.08em;border-radius:999px;padding:2px 7px;vertical-align:middle}
+  .today-pill{background:var(--blue);color:var(--on-blue)}.edited-pill{border:1px solid var(--line);color:var(--muted);font-weight:400}
+  .sched-today{box-shadow:inset 0 0 0 1px var(--blue)}
+  .sched-edit{margin-top:10px;background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:8px;padding:8px 12px;font-size:12px}
+  .sched-form{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+  .sched-form input,.sched-form textarea{width:100%;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:14px}
+  .card-progress{font-size:12px;color:var(--muted);margin:0 0 8px}
+  .flashcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 16px;margin-bottom:10px;min-height:220px;display:flex;flex-direction:column}
+  .fc-subject{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .fc-front{font-size:20px;font-weight:800;margin:10px 0 6px;line-height:1.25}
+  .fc-prompt{color:var(--muted);font-size:13px;flex:1}
+  .fc-flip{width:100%;margin-top:14px}
+  .fc-points{margin:8px 0 12px;padding-left:18px;font-size:14px;line-height:1.5}.fc-points li{margin-bottom:6px}
+  .fc-rate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:auto}
+  .fc-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--btn);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:10px 4px;font-size:13px;font-weight:700;min-height:54px}
+  .fc-btn small{font-size:10px;font-weight:400;color:var(--muted)}
+  .fc-btn.r-again{border-color:rgba(255,90,82,.5)}.fc-btn.r-easy{border-color:rgba(82,214,160,.5)}
+  .chip-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:6px}
+  .chart{background:var(--card);border-radius:14px;padding:12px 12px 10px;margin:0 0 12px}
+  .chart-title{font-size:13px;font-weight:700;margin:0 0 6px}
+  .chart-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--text2);margin:0 0 6px}
+  .lg-item{display:inline-flex;align-items:center;gap:6px}.lg-sw{width:14px;height:3px;border-radius:2px;display:inline-block}.lg-sw.dot{width:8px;height:8px;border-radius:50%}
+  .chart-holder{position:relative;overflow:clip}
+  .chart-svg{width:100%;height:auto;display:block;touch-action:pan-y}
+  .c-grid{stroke:var(--line);stroke-width:1}
+  .c-axis{fill:var(--muted);font-size:10px}
+  .c-label{fill:var(--text);font-size:11px;font-weight:700}
+  .c-ref{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 4}
+  .c-cross{stroke:var(--muted);stroke-width:1}
+  .c-dot,.c-hl{stroke:var(--card);stroke-width:2}
+  .chart-tip{position:absolute;top:0;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 8px;font-size:11px;line-height:1.4;pointer-events:none;white-space:normal;width:max-content;max-width:min(240px,92%);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .chart-table{margin-top:6px;font-size:12px;color:var(--muted)}.chart-table summary{cursor:pointer;padding:4px 0}
+  .chart-table table{width:100%;border-collapse:collapse;margin-top:6px}.chart-table th,.chart-table td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);color:var(--text2)}
+  .stall-card{border:1px solid rgba(246,196,83,.4)}
+  .warn-note{color:var(--amber-text)}
+  .pp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px}
+  .bw-form{display:flex;gap:8px;margin:4px 0 10px}.bw-form input{flex:1;min-width:0;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px}
+  .bw-form .btn{flex:0 0 auto;padding:10px 16px}
+  .bw-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 10px}.bw-stat{background:var(--panel2);border-radius:10px;padding:8px 10px}.bw-val{font-size:17px;font-weight:800;margin-top:2px}
+  .bw-target{margin-top:8px;font-size:13px}.bw-target summary{cursor:pointer;color:var(--text2);padding:4px 0}
+  .appearance-box .metric-label{margin-top:6px}
+  /* light theme: same layout, lighter surfaces; chart hues re-stepped for the light surface */
+  :root[data-theme="light"]{--bg:#f4f6f9;--card:#ffffff;--panel:#eef1f5;--panel2:#f1f4f8;--btn:#e8edf3;--input:#ffffff;--text:#101820;--text2:#2b3a4a;--muted:#5b6b7c;--line:rgba(15,23,42,.14);--hair:rgba(15,23,42,.12);
+    --red:#d93a32;--blue:#1f6fd1;--green:#13865c;--amber:#a66a00;--red-text:#c0362c;--amber-text:#8a5a00;--green-text:#15803d;--viz-1:#2a78d6;--viz-2:#b07800;--on-blue:#ffffff;color-scheme:light}
+  :root[data-theme="light"] input,:root[data-theme="light"] select,:root[data-theme="light"] textarea{color:var(--text);background-color:var(--input);border-color:var(--line)}
+  :root[data-theme="light"] .hdr-btn,:root[data-theme="light"] nav{box-shadow:0 -1px 0 var(--line)}
+  :root[data-theme="light"] .iv-round{background:#fdecea}:root[data-theme="light"] .iv-rest{background:#e7f6ef}:root[data-theme="light"] .iv-prep{background:#fdf4dc}
+  :root[data-theme="light"] .section-menu-backdrop,:root[data-theme="light"] .global-search-backdrop{background:rgba(15,23,42,.35)}
+  :root[data-theme="light"] .section-menu,:root[data-theme="light"] .global-search-panel{box-shadow:0 20px 60px rgba(15,23,42,.25)}
+  :root[data-theme="light"] .metric-card{background:var(--card)}
+  :root[data-theme="light"] .progress-track{background:#dde3ea}
+  :root[data-theme="light"] .danger-button{background:#fde8e8!important;color:#b42318!important;border-color:#f3b4b4!important}
+  :root[data-theme="light"] .calendar-day.selected{background:#e3f5ee}
+  :root[data-theme="light"] .training-card h4{color:#b4232c}
+  :root[data-theme="light"] .willie-visual{background:var(--panel2)}
+
+  /* v34 */
+  .spec-cov{display:block;font-size:12px;line-height:1.4;margin-top:5px;color:var(--muted)}.cov-c .cov-tag{color:var(--green-text)}.cov-p .cov-tag{color:var(--amber-text)}.cov-m .cov-tag{color:var(--red-text)}.cov-tag{font-weight:700}
+  .cov-link{display:block;margin-top:4px;font-size:12px;text-align:left}.spec-gaps{margin:-4px 0 12px}
+  /* v33 */
+  main{overflow-wrap:anywhere}
+  main select{max-width:100%}#focusTaskSelect{width:100%;text-overflow:ellipsis}
+  .ql-day{min-height:36px}.insight-card .small-action,.camp-hero .small-action{min-height:36px;padding:8px 12px}
+  .quicklog .ql-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.ql-day{background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12px}
+  .ql-grid{display:flex;flex-direction:column;gap:8px;margin:8px 0}.ql-row{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px}.ql-row.off{opacity:.5}
+  .ql-top{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600}.ql-top input{width:20px;height:20px;flex:0 0 20px}.ql-name small{font-weight:400;color:var(--muted)}
+  .ql-fields{display:grid;grid-template-columns:.7fr 1.4fr .8fr .7fr;gap:6px;margin-top:6px}.ql-in{width:100%;min-width:0;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 6px;font-size:13px}
+  .ql-done{font-size:12px;color:var(--green-text);margin:6px 0}
+  .hbars{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px}.hbar-row{display:grid;grid-template-columns:72px 1fr 78px;align-items:center;gap:8px;font-size:12px}
+  .hbar-label{color:var(--text2)}.hbar-track{height:10px;background:var(--panel2);border-radius:4px;overflow:hidden}.hbar-fill{height:100%;background:var(--viz-1);border-radius:0 4px 4px 0;min-width:0}.hbar-val{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+  .mistake-ref{font-style:italic}
+  .blurt-select{width:100%;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px;margin-bottom:8px}
+  .blurt-text{width:100%;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-size:14px;line-height:1.5}
+  .blurt-points{margin:4px 0 10px;padding-left:4px;list-style:none;font-size:13px;line-height:1.45}.blurt-points li{margin-bottom:5px}.blurt-points li.hit{color:var(--text2)}.blurt-points li.miss{color:var(--red-text)}
+  .rag-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px;margin:8px 0}.rag-bar span{min-width:3px}
+  .rag-g{background:var(--green)}.rag-a{background:var(--amber)}.rag-r{background:var(--red)}.rag-u{background:var(--line)}
+  .rag-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}.rag-tg{color:var(--green-text)}.rag-ta{color:var(--amber-text)}.rag-tr{color:var(--red-text)}
+  .spec-mod{background:var(--card);border-radius:14px;padding:10px 12px;margin-bottom:10px}.spec-mod summary{display:flex;justify-content:space-between;gap:8px;cursor:pointer;font-weight:700;font-size:13px;padding:4px 0}
+  .spec-mod-count{color:var(--muted);font-weight:400;white-space:nowrap}.spec-topic{font-size:12px;font-weight:700;color:var(--text2);margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em}
+  .spec-row{display:flex;gap:8px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}.spec-text{flex:1;font-size:13px;line-height:1.4}.spec-code{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+  .spec-btns{display:flex;gap:4px;flex:0 0 auto}.rag-btn{width:36px;height:36px;border-radius:9px;background:var(--btn);border:1px solid var(--line);color:var(--muted);font-size:15px;font-weight:700}
+  .rag-btn.rag-r.on{background:var(--red);color:#fff;border-color:var(--red)}.rag-btn.rag-a.on{background:var(--amber);color:#1a1200;border-color:var(--amber)}.rag-btn.rag-g.on{background:var(--green);color:#03140d;border-color:var(--green)}.rag-find{font-size:13px}
+  .iv-combo-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}.iv-combo-row .iv-warn{margin:0}.iv-combo-row select{background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12px}
+  .iv-combo{font-size:24px;font-weight:800;min-height:30px;margin-top:8px;letter-spacing:.04em}
+  .camp-hero{text-align:center}.camp-days{font-size:56px;font-weight:800;line-height:1.05;margin:6px 0}
+  .camp-timeline{display:flex;gap:3px;margin:12px 0 6px}.camp-seg{flex:1;font-size:10px;padding:6px 2px;border-radius:6px;background:var(--panel2);color:var(--muted);border:1px solid var(--line)}.camp-seg.on{background:var(--text);color:var(--bg);font-weight:700;border-color:var(--text)}
+  .report-table{width:100%;border-collapse:collapse;font-size:13px}.report-table th{text-align:left;font-weight:600;color:var(--muted);padding:7px 8px 7px 0;width:42%;vertical-align:top}.report-table td{padding:7px 0;color:var(--text);border-bottom:1px solid var(--line)}.report-table th{border-bottom:1px solid var(--line)}
+  @media print{body.printing-report header,body.printing-report nav,body.printing-report .section-menu-backdrop,body.printing-report .global-search-backdrop,body.printing-report main>section:not(#view-weekly),body.printing-report #view-weekly>*:not(#weeklyReport){display:none!important}body.printing-report main{padding:0}body.printing-report .no-print{display:none!important}body.printing-report{background:#fff!important}body.printing-report .report-card{background:#fff!important;color:#000!important}body.printing-report .report-table th,body.printing-report .report-table td,body.printing-report .checkin-title{color:#000!important}}
+  /* v31 */
+  .coach-chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px}.coach-chip{flex:0 0 auto;background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:999px;padding:9px 13px;font-size:12px;white-space:nowrap}
+  .coach-log{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;max-height:62vh;overflow-y:auto;padding:2px}
+  .coach-msg{border-radius:14px;padding:11px 13px;font-size:13px;line-height:1.45;max-width:94%}.coach-msg p{margin:0 0 6px}.coach-msg p:last-child{margin-bottom:0}
+  .coach-msg.me{align-self:flex-end;background:#1d4f7a;color:#fff}.coach-msg.bot{align-self:flex-start;background:var(--card);border:1px solid var(--line)}
+  .coach-item{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:9px 11px;margin-top:8px}.coach-item-top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.coach-item-top strong{font-size:13px}
+  .coach-min{color:var(--amber);font-size:11px;white-space:nowrap}.coach-detail{color:var(--muted);font-size:12px;margin-top:3px}.coach-act{margin-top:7px;font-size:12px;padding:8px 12px;min-height:36px}
+  .coach-input{display:flex;gap:8px;margin-bottom:6px}.coach-input input{flex:1;min-width:0;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px}
+  .coach-card{background:var(--card);border:1px solid rgba(83,167,255,.3);border-left:3px solid var(--blue);border-radius:14px;padding:12px 14px;margin:0 0 12px}.coach-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .coach-card-head .small-action{background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:8px;padding:7px 10px;font-size:11px}
+  .coach-exam{font-size:12px;color:var(--blue);margin-bottom:8px}.coach-exam.soon{color:var(--amber)}
+  .coach-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0}.coach-num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--btn);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .coach-row-title{font-size:13px;font-weight:600}.coach-row-text{min-width:0}
+  .exam-item{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border-radius:14px;padding:12px;margin-bottom:8px}.exam-item.soon{border:1px solid rgba(246,196,83,.4)}.exam-main{flex:1;min-width:150px}
+  .exam-days{text-align:center;min-width:48px}.exam-days-n{font-size:22px;font-weight:800;line-height:1}.exam-days-l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .insight-card{background:var(--card);border-radius:14px;padding:12px 14px;margin:0 0 12px}.insight-row{display:flex;justify-content:space-between;align-items:center;gap:8px}.insight-note{font-size:12px;color:var(--muted);margin:8px 0}
+  .insight-topic{display:flex;justify-content:space-between;width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;font-size:13px;margin-top:6px}.insight-pct{color:var(--red);font-weight:700}
+  .insight-focus{display:flex;justify-content:space-between;align-items:center;background:rgba(83,167,255,.12);border-radius:10px;padding:8px 12px;font-size:12px;margin-bottom:8px}.insight-x{background:none;border:none;color:var(--blue);font-size:12px}
+  .revised-btn{display:block;width:100%;margin-top:10px;background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:10px;padding:11px;font-size:13px}.revised-btn.on{background:rgba(82,214,160,.15);border-color:rgba(82,214,160,.5);color:var(--green)}.rev-badge{color:var(--green);font-size:12px}
+  .iv-card .btn:disabled,.iv-card button:disabled,.iv-card select:disabled,.iv-card input:disabled{opacity:.4}
+  .iv-card{text-align:center}.iv-phase{font-size:15px;font-weight:800;letter-spacing:.12em;color:var(--muted)}.iv-clock{font-size:64px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1;margin:4px 0}.iv-meta{font-size:12px;color:var(--muted);min-height:16px}
+  .iv-bar{height:6px;background:var(--hair);border-radius:3px;margin:12px 0;overflow:hidden}.iv-bar div{height:100%;width:0;background:var(--blue);transition:width .25s linear}
+  .iv-round{background:#2a1214;border:1px solid rgba(255,90,82,.5)}.iv-round .iv-phase{color:var(--red)}.iv-round .iv-bar div{background:var(--red)}
+  .iv-rest{background:#0f2418;border:1px solid rgba(82,214,160,.5)}.iv-rest .iv-phase{color:var(--green)}.iv-rest .iv-bar div{background:var(--green)}
+  .iv-prep{background:#262010;border:1px solid rgba(246,196,83,.5)}.iv-prep .iv-phase{color:var(--amber)}.iv-done .iv-phase{color:var(--green)}
+  .iv-presets{display:flex;gap:6px;justify-content:center;margin:12px 0 4px;flex-wrap:wrap}.iv-presets button{background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:999px;padding:8px 12px;font-size:12px}
+  .iv-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px;text-align:left}.iv-fields label{font-size:11px;color:var(--muted);display:block}
+  .iv-fields input,.iv-fields select{width:100%;margin-top:3px;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px}.iv-warn{display:block;margin-top:10px;font-size:12px;color:var(--muted);text-align:left}
+  .suggestion-card{background:var(--card);border:1px solid rgba(246,196,83,.35);border-left:3px solid var(--amber);border-radius:14px;padding:12px 14px;margin:0 0 12px}
+  .suggestion-title{font-size:13px;font-weight:700;color:var(--text);margin:0 0 4px}
+  .suggestion-copy{font-size:12px;line-height:1.45;color:var(--muted)}
+  .suggestion-card .item-actions button{font-size:12px;padding:8px 12px;min-height:36px}
+  .item-actions button,.small-action{background:var(--btn);border:1px solid var(--line);color:var(--text2);border-radius:8px;padding:6px 9px;font-size:10px}
+  .priority-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;background:var(--blue)}
+  .priority-high{background:var(--red)} .priority-medium{background:var(--amber)} .priority-low{background:var(--green)}
+  .status-pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px 7px;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-left:5px}
+  .empty-state{border:1px dashed var(--line);border-radius:12px;padding:20px 14px;text-align:center;color:var(--muted);font-size:12px;line-height:1.6}
+  .progress-track{height:5px;background:#253140;border-radius:99px;overflow:hidden;margin-top:8px}
+  .progress-fill{height:100%;background:var(--green);border-radius:99px}
+  .system-note{font-size:11px;line-height:1.6;color:var(--muted)}
+  .danger-button{background:#421f25!important;color:#ffb4b4!important;border-color:#71333b!important}
+  .calendar-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+  .calendar-head button,.calendar-day{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:9px}
+  .calendar-head button{padding:8px 11px}
+  .calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:14px}
+  .calendar-weekday{text-align:center;color:var(--muted);font-size:9px;padding:5px 0;text-transform:uppercase}
+  .calendar-day{min-height:47px;padding:5px 2px;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .calendar-day:disabled{opacity:.25}
+  .calendar-day.selected{border-color:var(--green);background:#17342e}
+  .calendar-day.today{color:var(--green);font-weight:800}
+  .calendar-dot{width:5px;height:5px;border-radius:50%;background:var(--amber)}
+  .habit-row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--panel);border-radius:11px;padding:12px;margin-bottom:7px}
+  .habit-row input{width:20px;height:20px;accent-color:var(--green)}
+  .habit-main{flex:1;min-width:0}.habit-title{font-size:12px;font-weight:700}.habit-meta{font-size:10px;color:var(--muted);margin-top:4px}
+  .habit-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+  .area-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
+  .area-card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px;min-width:0}
+  .area-card strong{display:block;font-size:12px;margin-bottom:4px}
+  .area-card .area-count{font-size:21px;font-weight:800}
+  .area-card .area-detail{font-size:10px;color:var(--muted);line-height:1.5}
+  .review-suggestion{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:12px;margin-bottom:8px;font-size:12px;line-height:1.5}
+  @media(min-width:700px){main{max-width:900px;margin:0 auto}.command-grid{grid-template-columns:repeat(4,minmax(0,1fr))}nav{justify-content:center}nav button{flex:0 1 90px}}
+
+
+  .training-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+  .training-card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:14px;margin-bottom:10px}
+  .training-card h3{font-size:15px;margin:0 0 6px}.training-card h4{font-size:12px;margin:12px 0 6px;color:#fca5a5}
+  .training-card p,.training-card li{font-size:12px;color:var(--text2);line-height:1.5}
+  .training-card ul{padding-left:18px;margin:7px 0}.training-meta{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .training-form{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px;margin:10px 0}
+  .training-form input,.training-form select,.training-form textarea{width:100%;background:var(--input);border:1px solid var(--hair);border-radius:10px;padding:10px;color:var(--text);font:inherit;font-size:13px}
+  .training-form label{display:block;color:var(--muted);font-size:11px;font-weight:700;margin-bottom:5px}
+  .training-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .training-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+  .training-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+  .training-stat strong{display:block;font-size:21px}.training-stat span{font-size:9px;color:var(--muted);text-transform:uppercase}
+  .willie-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start}
+  .willie-visual{background:#0b1118;border:1px solid var(--line);border-radius:14px;padding:8px;max-width:440px;margin:0 auto;width:100%}
+  .willie-visual svg{display:block;width:100%;height:auto;max-height:390px}
+  .willie-target{cursor:pointer;outline:none}.willie-target circle{stroke:#f8fafc;stroke-width:2;fill:#ef4444;transition:fill .15s, r .15s}
+  .willie-target text{font-size:13px;font-weight:900;fill:#fff;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+  .willie-target.active circle{fill:var(--amber-text);stroke:#fff;r:18}.willie-target.active text{fill:var(--panel2)}
+  .willie-number-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:10px 0}
+  .willie-number-grid button{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:9px 4px;font-weight:800}
+  .willie-number-grid button.active{background:var(--amber-text);color:var(--panel2);border-color:var(--amber-text)}
+  .willie-callout{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;margin:10px 0}
+  .willie-callout .call-number{font-size:48px;line-height:1;font-weight:900;color:var(--amber-text)}.willie-callout .call-label{font-size:13px;font-weight:700;margin-top:7px}
+  .training-log-item{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px;margin-bottom:7px}
+  .training-log-item strong{font-size:13px}.training-log-item p{font-size:11px;color:var(--muted);margin:5px 0 0;line-height:1.45}
+  .training-tabs{display:flex;gap:7px;overflow-x:auto;margin:10px 0 14px}.training-tabs button{flex:1;min-width:max-content;background:var(--panel);color:var(--muted);border:1px solid var(--line);padding:9px 12px;border-radius:10px;font-weight:700;font-size:12px}.training-tabs button.active{background:rgba(255,90,82,.14);color:var(--text);border-color:rgba(255,90,82,.45)}
+  .evidence-note{border-left:3px solid var(--green);padding:8px 10px;background:rgba(82,214,160,.06);border-radius:0 9px 9px 0;font-size:11px;color:var(--text2);line-height:1.5;margin:10px 0}
+  @media(min-width:700px){.training-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.willie-layout{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
+
+
+  .lifeos-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+  .lifeos-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;min-width:0}
+  .lifeos-card h3{font-size:14px;margin:0 0 8px}.lifeos-card p,.lifeos-card li{font-size:12px;line-height:1.55;color:var(--text2)}
+  .lifeos-card label{display:block;color:var(--muted);font-size:11px;font-weight:700;margin:7px 0 4px}
+  .lifeos-card input,.lifeos-card select,.lifeos-card textarea{width:100%;background:var(--input);border:1px solid var(--hair);border-radius:9px;padding:10px;color:var(--text);font:inherit;font-size:13px;min-width:0}
+  .lifeos-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .lifeos-list-item{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px;margin:7px 0;font-size:12px;overflow-wrap:anywhere}
+  .lifeos-list-item small{display:block;color:var(--muted);margin-top:4px;line-height:1.45}
+  .lifeos-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+  .lifeos-stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px}.lifeos-stat strong{display:block;font-size:22px}.lifeos-stat span{font-size:10px;color:var(--muted);text-transform:uppercase}
+  .lifeos-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.lifeos-actions button{font-size:11px}
+  .lifeos-note{border-left:3px solid var(--green);padding:9px 11px;background:rgba(82,214,160,.06);font-size:11px;line-height:1.5;color:var(--text2);margin:9px 0}
+  .lifeos-pill{display:inline-block;padding:3px 7px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:10px;margin-right:4px}
+  @media(min-width:700px){.lifeos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lifeos-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-row"><h1>BRIDGE PROTOCOL <span style="color:var(--green);font-size:10px;vertical-align:middle;letter-spacing:.12em">v38</span></h1><div class="hdr-actions"><button class="hdr-btn hdr-music" type="button" onclick="openMusic()" aria-label="Music: your YouTube Music playlists">♪</button><button class="hdr-btn" type="button" onclick="openGlobalSearch()" aria-label="Search everything">⌕ Search</button></div></div>
+  <p class="offline-badge" id="offlineBadge">● Offline mode — running from cache</p>
+  <div id="hubTabs" class="hub-tabs" role="tablist" aria-label="Sections in this area"></div>
+</header>
+
+<main>
+  <section id="view-command">
+    <p class="eyebrow" id="commandDate">SYSTEM / DAILY BRIEF</p>
+    <h2 class="view-title">Command Centre</h2>
+    <p class="view-subtitle">One place to see priorities, move projects forward and keep your day under control.</p>
+    <div id="commandBackupNudge"></div>
+    <div id="commandCheckin"></div>
+    <div id="commandCoachCard"></div>
+    <div class="command-grid" id="commandMetrics"></div>
+    <div class="section-kicker">Life areas <button onclick="showView('weekly')">Weekly review →</button></div>
+    <div id="commandLifeAreas"></div>
+    <div class="section-kicker">Priority queue <button onclick="showView('tasks')">All tasks →</button></div>
+    <div id="commandTasks"></div>
+    <div class="section-kicker">Suggested adjustments <span class="system-note">Review before applying</span></div>
+    <div id="commandSuggestions"></div>
+    <div class="section-kicker">Active projects <button onclick="showView('projects')">All projects →</button></div>
+    <div id="commandProjects"></div>
+    <div class="section-kicker">Quick capture</div>
+    <div class="form-panel">
+      <div class="field"><label for="quickTaskTitle">Task or reminder</label><input id="quickTaskTitle" maxlength="160" placeholder="Capture it before you forget…"></div>
+      <div class="field-grid">
+        <div class="field"><label for="quickTaskArea">Life area</label><select id="quickTaskArea"><option value="personal">Personal</option><option value="study">Study / learning</option><option value="work">Work / career</option><option value="health">Health / fitness</option><option value="home">Home / errands</option><option value="relationships">Relationships</option><option value="finance">Finance</option><option value="admin">Life admin</option><option value="other">Other</option></select></div>
+        <div class="field"><label for="quickTaskDue">Due date</label><input id="quickTaskDue" type="date"></div>
+        <div class="field"><label for="quickTaskPriority">Priority</label><select id="quickTaskPriority"><option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option></select></div>
+      </div>
+      <button class="btn btn-green" style="width:100%" onclick="quickAddTask()">＋ Capture task</button>
+    </div>
+  </section>
+
+  <section id="view-tasks" class="hidden">
+    <p class="eyebrow">OPERATIONS / TASK REGISTER</p><h2 class="view-title">Tasks</h2><p class="view-subtitle">Turn intentions into clear next actions. Stored on this device.</p>
+    <div class="form-panel" id="taskFormPanel">
+      <input id="taskEditId" type="hidden">
+      <div class="field"><label for="taskTitle">Task title</label><input id="taskTitle" maxlength="160" placeholder="What needs doing?"></div>
+      <div class="field-grid">
+        <div class="field"><label for="taskDue">Due date</label><input id="taskDue" type="date"></div>
+        <div class="field"><label for="taskPriority">Priority</label><select id="taskPriority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select></div>
+      </div>
+      <div class="field"><label for="taskDuration">Estimated effort (minutes)</label><input id="taskDuration" type="number" min="5" max="480" step="5" value="25" inputmode="numeric"></div>
+      <div class="field-grid">
+        <div class="field"><label for="taskArea">Life area</label><select id="taskArea"><option value="personal">Personal</option><option value="study">Study / learning</option><option value="work">Work / career</option><option value="health">Health / fitness</option><option value="home">Home / errands</option><option value="relationships">Relationships</option><option value="finance">Finance</option><option value="admin">Life admin</option><option value="other">Other</option></select></div>
+        <div class="field"><label for="taskProject">Project</label><select id="taskProject"><option value="">No project</option></select></div>
+        <div class="field"><label for="taskStatus">Status</label><select id="taskStatus"><option value="next">Next</option><option value="progress">In progress</option><option value="done">Done</option></select></div>
+      </div>
+      <div class="field"><label for="taskNotes">Notes (optional)</label><textarea id="taskNotes" maxlength="1200" placeholder="Context, next step or useful details"></textarea></div>
+      <div class="action-row"><button class="btn btn-green" onclick="saveTask()">Save task</button><button class="btn btn-secondary" onclick="clearTaskForm()">Clear</button></div>
+    </div>
+    <div class="subject-tabs" id="taskFilters"><button class="active-subject" onclick="setTaskFilter('open')">Open</button><button onclick="setTaskFilter('today')">Due today</button><button onclick="setTaskFilter('all')">All</button><button onclick="setTaskFilter('done')">Completed</button></div>
+    <div id="taskList"></div>
+  </section>
+
+  <section id="view-projects" class="hidden">
+    <p class="eyebrow">OPERATIONS / PROJECT REGISTER</p><h2 class="view-title">Projects & goals</h2><p class="view-subtitle">Give larger outcomes a name, a target date and a measurable next step.</p>
+    <div class="form-panel">
+      <input id="projectEditId" type="hidden">
+      <div class="field"><label for="projectTitle">Project or goal</label><input id="projectTitle" maxlength="120" placeholder="e.g. A-level revision system"></div>
+      <div class="field-grid"><div class="field"><label for="projectTarget">Target date</label><input id="projectTarget" type="date"></div><div class="field"><label for="projectStatus">Status</label><select id="projectStatus"><option value="active">Active</option><option value="paused">Paused</option><option value="done">Completed</option></select></div></div>
+      <div class="field"><label for="projectDescription">Outcome / definition of done</label><textarea id="projectDescription" maxlength="1200" placeholder="What does success look like?"></textarea></div>
+      <div class="action-row"><button class="btn btn-green" onclick="saveProject()">Save project</button><button class="btn btn-secondary" onclick="clearProjectForm()">Clear</button></div>
+    </div>
+    <div id="projectList"></div>
+  </section>
+
+  <section id="view-planner" class="hidden">
+    <p class="eyebrow">PLAN / CALENDAR</p><h2 class="view-title">Calendar</h2><p class="view-subtitle">A month view for task deadlines and project targets. Select a day to see what is scheduled.</p>
+    <div class="row-actions"><button type="button" onclick="exportCalendar()">📅 Send deadlines &amp; exams to my phone calendar</button></div>
+    <div class="form-panel">
+      <div class="calendar-head"><button onclick="changePlannerMonth(-1)" aria-label="Previous month">←</button><strong id="plannerMonthLabel">Month YYYY</strong><button onclick="changePlannerMonth(1)" aria-label="Next month">→</button></div>
+      <div id="plannerCalendar" class="calendar-grid"></div>
+      <button class="btn btn-secondary" style="width:100%" onclick="plannerGoToday()">Jump to today</button>
+    </div>
+    <div class="section-kicker" id="plannerDayLabel">Selected day</div><div id="plannerDayItems"></div>
+    <button class="btn btn-green" style="width:100%;margin-top:10px" onclick="plannerAddTask()">＋ Add task for selected day</button>
+  </section>
+
+  <section id="view-habits" class="hidden">
+    <p class="eyebrow">OPERATIONS / CONSISTENCY</p><h2 class="view-title">Habits</h2><p class="view-subtitle">Track repeatable actions by day. Check-ins are stored locally and can be included in backups.</p>
+    <div class="form-panel"><div class="field"><label for="habitTitle">New habit</label><input id="habitTitle" maxlength="100" placeholder="e.g. 20 minutes of active recall" onkeydown="if(event.key==='Enter')addHabit()"></div><button class="btn btn-green" style="width:100%" onclick="addHabit()">＋ Add habit</button></div>
+    <div class="habit-stats" id="habitStats"></div>
+    <div class="section-kicker"><span id="habitDateLabel">Today's check-in</span><button onclick="changeHabitDate(-1)">Previous day</button><button onclick="changeHabitDate(1)">Next day</button></div>
+    <div id="habitList"></div>
+    <p class="system-note">Streaks count consecutive calendar days ending on the selected date. A missed day breaks the streak; no reminders or notifications are sent.</p>
+  </section>
+
+  <section id="view-weekly" class="hidden">
+    <p class="eyebrow">OPERATIONS / WHOLE-LIFE REVIEW</p><h2 class="view-title">Weekly Review</h2>
+    <p class="view-subtitle">Review the whole system, not just your task list. These reflections are saved locally and nothing is rescheduled automatically.</p>
+    <div class="command-grid" id="weeklyMetrics"></div>
+    <div id="weeklyStudyBox"></div>
+    <div class="section-kicker">Report</div><div id="weeklyReport"></div>
+    <div class="section-kicker">Life-area balance</div><div id="weeklyAreas"></div>
+    <div class="section-kicker">Review prompts</div>
+    <div class="form-panel">
+      <div class="field"><label for="weeklyWins">What went well this week?</label><textarea id="weeklyWins" maxlength="3000" placeholder="Progress, habits, moments or things worth repeating"></textarea></div>
+      <div class="field"><label for="weeklyFriction">What created friction or was neglected?</label><textarea id="weeklyFriction" maxlength="3000" placeholder="Bottlenecks, overload, distractions or areas needing attention"></textarea></div>
+      <div class="field"><label for="weeklyFocus">What matters most next week?</label><textarea id="weeklyFocus" maxlength="3000" placeholder="Choose a few outcomes across work, study, health and personal life"></textarea></div>
+      <div class="field"><label for="weeklyChange">Possible change to consider (optional)</label><textarea id="weeklyChange" maxlength="2000" placeholder="A change to your routine or plan for Bridge Protocol to suggest, not apply automatically"></textarea></div>
+      <button class="btn btn-green" style="width:100%" onclick="saveWeeklyReview()">Save weekly review</button>
+      <p id="weeklySavedStatus" class="system-note" aria-live="polite"></p>
+    </div>
+    <div class="section-kicker">Suggested review actions <span class="system-note">No changes without approval</span></div><div id="weeklySuggestions"></div>
+  </section>
+
+  <section id="view-system" class="hidden">
+    <p class="eyebrow">SYSTEM / DATA CONTROL</p><h2 class="view-title">Settings &amp; backups</h2><p class="view-subtitle">Your data stays in this browser on this device. Export backups regularly; browser storage can be cleared by the operating system or browser.</p>
+    <div class="form-panel appearance-box"><h3 style="margin:0 0 4px;font-size:14px">Appearance</h3><div id="appearanceBox"></div></div>
+    <div class="metric-card" style="margin-bottom:12px"><div class="metric-label">Storage model</div><div class="metric-value" style="font-size:20px">Local-first</div><div class="metric-detail">No account or cloud connection required. Backups are manual.</div></div>
+    <div class="form-panel"><h3 style="margin:0 0 8px;font-size:14px">Backup your data</h3><p class="system-note">Exports Bridge Protocol settings, tasks, projects, custom notes, checklist state, schedule preferences, workout history and saved calculator inputs into a JSON file.</p><button class="btn btn-green" style="width:100%;margin:10px 0" onclick="exportBackup()">↓ Export backup (.json)</button><button class="btn btn-secondary" style="width:100%;margin:0 0 10px" onclick="shareBackup()">↗ Share backup to Drive, WhatsApp, email…</button><label class="btn btn-secondary" style="display:block;text-align:center;cursor:pointer" for="backupFile">↑ Restore from backup</label><input id="backupFile" type="file" accept="application/json,.json,text/plain,.txt" style="display:none" onchange="importBackupFile(this)"><p class="system-note" style="margin-top:10px">Restore replaces matching Bridge Protocol data on this device. Export a fresh backup first if you want to preserve the current state.</p></div>
+    <div class="form-panel"><h3 style="margin:0 0 8px;font-size:14px">Data status</h3><div id="dataStatus" class="system-note"></div><div id="persistStatus" class="system-note" style="margin-top:8px"></div><button class="btn btn-secondary" style="width:100%;margin-top:12px" onclick="refreshDataStatus()">Refresh status</button></div>
+    <div class="form-panel"><h3 style="margin:0 0 8px;font-size:14px">Reset local data</h3><p class="system-note">This permanently deletes Bridge Protocol data stored in this browser. Export a backup before continuing.</p><button class="btn danger-button" style="width:100%;margin-top:10px" onclick="resetAllAppData()">Reset all local app data</button></div>
+  </section>
+
+  <section id="view-schedule" class="hidden">
+    <p class="eyebrow">PLAN / WEEK PLAN</p><h2 class="view-title">Week plan</h2><p class="view-subtitle">Your weekly training and study template. Tap ✎ Edit to change a block. The Coach plans each day from this.</p>
+    <div id="scheduleList"></div>
+  </section>
+
+
+  <section id="view-training" class="hidden">
+    <p class="eyebrow">PERFORMANCE / STRENGTH & BOXING</p><h2 class="view-title">Training Lab</h2>
+    <p class="view-subtitle">Evidence-informed strength, muscle growth and boxing-specific power, with a local workout log and a Cus D’Amato-style Willie Bag number caller.</p>
+    <div id="quickLog"></div>
+    <div class="training-tabs" role="tablist" aria-label="Training sections">
+      <button type="button" id="training-tab-plan" class="active" onclick="showTrainingPanel('plan')">Training plan</button>
+      <button type="button" id="training-tab-log" onclick="showTrainingPanel('log')">Workout log</button>
+      <button type="button" id="training-tab-willie" onclick="showTrainingPanel('willie')">Willie Bag</button>
+    </div>
+    <div id="training-panel-plan">
+      <div class="training-card"><div class="training-meta">Programming principles</div><h3>Build strength, size and punch-specific power without junk volume</h3><p>Use this as a starting template, not a claim that one routine is universally optimal. Keep boxing skill work the priority when technical quality or recovery is slipping.</p><ul><li><b>Strength:</b> usually 3–5 reps on primary lifts, challenging loads, full controlled range of motion and 2–4 minutes rest.</li><li><b>Hypertrophy:</b> for muscles you want to prioritise, work gradually toward roughly 10 hard sets per week; use mostly 6–15 reps and add volume only while recovering. The example plan starts more conservatively to leave room for boxing.</li><li><b>Effort:</b> finish most sets with about 1–3 good reps in reserve. Training to failure is not required.</li><li><b>Boxing power:</b> do jumps and medicine-ball throws fresh, with low reps and full intent; stop when speed or technique drops.</li><li><b>Progression:</b> when every set reaches the top of its rep range with stable technique and the planned effort, add a small amount of load next time.</li></ul><div class="evidence-note">Evidence summary: a 2026 ACSM overview of 137 systematic reviews found heavier loads (around ≥80% 1RM) particularly useful for maximal strength, higher weekly volume (around ≥10 sets per muscle) helpful for hypertrophy, and moderate loads moved fast useful for power. Boxing evidence links punch impact to lower-body maximal and explosive strength, but boxing-specific study quality remains limited.</div></div>
+      <div class="training-grid">
+        <div class="training-card"><div class="training-meta">Session A · Strength</div><h3>Lower + upper strength</h3><ul><li>Squat or trap-bar deadlift — 3×3–5</li><li>Bench press or push-up variation — 3×4–6</li><li>Weighted chin-up or row — 3×5–8</li><li>Romanian deadlift — 2–3×6–8</li><li>Anti-rotation core (Pallof press) — 2–3×8–12/side</li></ul><p><b>Rest:</b> 2–4 min on main lifts. Keep 1–3 reps in reserve; use a spotter/safeties for heavy barbell work.</p></div>
+        <div class="training-card"><div class="training-meta">Session B · Power + strength</div><h3>Explosive intent</h3><ul><li>Countermovement jump — 3×3</li><li>Medicine-ball rotational throw — 4×3/side</li><li>Front squat or split squat — 3×5–8</li><li>Overhead press — 3×5–8</li><li>Pull-up or chest-supported row — 3×6–10</li><li>Calf raise or hamstring curl — 2×10–15</li></ul><p>Perform jumps/throws first. Reset between reps; these are power drills, not conditioning finishers. Use a safe clear area and suitable medicine ball.</p></div>
+        <div class="training-card"><div class="training-meta">Session C · Hypertrophy</div><h3>Full-body muscle growth</h3><ul><li>Leg press or squat — 3×6–10</li><li>Incline dumbbell press — 3×6–12</li><li>Seated row — 3×8–12</li><li>Hip hinge or hamstring curl — 3×8–12</li><li>Lateral raise — 2–3×12–20</li><li>Biceps curl + triceps cable pressdown — 2×10–15 each</li></ul><p>Use controlled reps and a comfortable range of motion. Add sets only if performance, joints and boxing sessions are recovering well.</p></div>
+        <div class="training-card"><div class="training-meta">Session D · Boxing specificity</div><h3>Willie Bag + conditioning</h3><ul><li>Warm-up and shadowbox — 5–8 min</li><li>Willie Bag number calls — 4–6×2–3 min, 60–90 sec rest</li><li>Footwork/defence after each combination — keep guard and balance</li><li>Optional easy aerobic work — 15–25 min, if it does not compromise recovery</li></ul><p>Start with short 2–3-number sequences and controlled accuracy; progress toward longer calls only when technique stays clean. Bag work complements coaching and sparring; it does not replace them.</p></div>
+      </div>
+      <div class="training-card"><h3>How to arrange the week</h3><p>Start with 2–3 resistance sessions weekly, separated where possible from the hardest boxing sessions. A simple sequence is A / rest or boxing / B / rest / C / boxing skill / rest. If boxing performance is the top priority, put technical boxing first on double-session days and reduce lifting volume during hard sparring weeks. Leave at least one genuine recovery opportunity each week.</p><p class="system-note">Safety: warm up, learn lifts with a qualified coach, and stop for sharp pain, dizziness or unusual symptoms. Do not test maximal lifts alone. If you are new to lifting, start lighter and build technique before loading aggressively.</p></div>
+    </div>
+    <div id="training-panel-log" class="hidden">
+      <div class="training-stat-grid" id="trainingLogStats"></div>
+      <div class="training-card"><h3>Log a workout set or exercise</h3><p>Entries are saved on this device and included in Bridge Protocol JSON backups.</p>
+        <div class="training-form">
+          <div class="training-fields"><div><label for="workoutDate">Date</label><input id="workoutDate" type="date"></div><div><label for="workoutType">Session</label><select id="workoutType"><option>Session A — Strength</option><option>Session B — Power + Strength</option><option>Session C — Hypertrophy</option><option>Session D — Boxing / Willie Bag</option><option>Boxing skills / sparring</option><option>Conditioning / recovery</option><option>Custom session</option></select></div></div>
+          <div style="margin-top:9px"><label for="workoutExercise">Exercise / drill</label><input id="workoutExercise" maxlength="120" list="workoutExerciseOptions" placeholder="e.g. Squat, medicine-ball throw, bag rounds"><datalist id="workoutExerciseOptions"><option>Squat</option><option>Trap-bar deadlift</option><option>Bench press</option><option>Chin-up</option><option>Romanian deadlift</option><option>Medicine-ball rotational throw</option><option>Countermovement jump</option><option>Willie Bag number calls</option><option>Shadowboxing</option><option>Skipping</option><option>Easy aerobic conditioning</option></datalist></div>
+          <div class="training-fields" style="margin-top:9px"><div><label for="workoutSets">Sets / rounds</label><input id="workoutSets" type="number" min="1" max="30" value="3"></div><div><label for="workoutReps">Reps / duration</label><input id="workoutReps" maxlength="30" value="5" placeholder="e.g. 5 or 3 min"></div><div><label for="workoutLoad">Load (kg, optional)</label><input id="workoutLoad" type="number" min="0" max="1000" step="0.5" placeholder="Bodyweight = blank"></div><div><label for="workoutRpe">Effort (RPE 1–10)</label><select id="workoutRpe"><option value="">Not recorded</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div></div>
+          <div style="margin-top:9px"><label for="workoutNotes">Notes (optional)</label><textarea id="workoutNotes" maxlength="600" rows="2" placeholder="Technique, speed, rest, how it felt"></textarea></div>
+          <button class="btn btn-green" style="width:100%;margin-top:10px" onclick="saveWorkoutEntry()">＋ Save workout entry</button>
+        </div>
+      </div>
+      <div class="section-kicker">Recent training log <button onclick="renderWorkoutLog()">Refresh</button></div><div id="workoutLogList"></div>
+    </div>
+    <div id="training-panel-willie" class="hidden">
+      <div class="training-card"><div class="training-meta">Cus D’Amato-style punch-call drill</div><h3>Listen, identify the target, strike, return to guard</h3><p>The classic Willie Bag numbers are target calls, not the generic 1–8 punch numbering used in many gyms. This trainer uses the historical Willie Bag mapping below. Use your coach’s instructions if your bag or gym uses a different legend.</p>
+        <div class="training-fields"><div><label for="willieStance">Stance</label><select id="willieStance" onchange="updateWillieMapping()"><option value="orthodox">Orthodox — left lead</option><option value="southpaw">Southpaw — right lead</option></select></div><div><label for="willieCallMode">Voice prompt</label><select id="willieCallMode"><option value="number">Number only</option><option value="number-target">Number + target</option></select></div><div><label for="willieInterval">Auto-call interval</label><select id="willieInterval"><option value="2">2 seconds</option><option value="3" selected>3 seconds</option><option value="4">4 seconds</option><option value="5">5 seconds</option></select></div><div><label for="willieCallCount">Calls per drill</label><select id="willieCallCount"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></div></div>
+      </div>
+      <div class="willie-layout">
+        <div><div class="willie-visual"><svg viewBox="0 0 320 390" role="img" aria-label="Front-facing Willie Bag target diagram with eight numbered strike zones">
+          <defs><linearGradient id="willieBodyShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#64748b"/><stop offset="1" stop-color="#1e293b"/></linearGradient></defs>
+          <path d="M120 36 Q160 12 200 36 L215 61 Q221 80 207 95 L221 115 Q246 120 263 143 L284 208 Q288 225 273 229 Q260 231 254 215 L234 170 L225 209 L229 273 L213 352 Q208 369 195 363 Q185 359 190 342 L195 275 L125 275 L130 342 Q135 359 123 363 Q110 367 106 351 L91 273 L95 209 L86 170 L66 215 Q60 231 47 229 Q32 225 36 208 L57 143 Q74 120 99 115 L113 95 Q99 80 105 61 Z" fill="url(#willieBodyShade)" stroke="#94a3b8" stroke-width="2"/>
+          <path d="M113 96 Q160 115 207 96 M99 115 Q160 135 221 115 M95 209 Q160 226 225 209 M125 275 L195 275" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity=".6"/>
+          <path d="M120 36 Q160 12 200 36 Q210 49 202 68 Q195 87 160 91 Q125 87 118 68 Q110 49 120 36" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+          <g class="willie-target" id="willie-zone-1" onclick="willieSelectTarget(1)" role="button" tabindex="0" aria-label="Target 1, left hook to jaw" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(1)}"><circle cx="137" cy="69" r="15"/><text x="137" y="69">1</text></g>
+          <g class="willie-target" id="willie-zone-2" onclick="willieSelectTarget(2)" role="button" tabindex="0" aria-label="Target 2, right hook to jaw" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(2)}"><circle cx="183" cy="69" r="15"/><text x="183" y="69">2</text></g>
+          <g class="willie-target" id="willie-zone-3" onclick="willieSelectTarget(3)" role="button" tabindex="0" aria-label="Target 3, left uppercut" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(3)}"><circle cx="143" cy="101" r="15"/><text x="143" y="101">3</text></g>
+          <g class="willie-target" id="willie-zone-4" onclick="willieSelectTarget(4)" role="button" tabindex="0" aria-label="Target 4, right uppercut" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(4)}"><circle cx="177" cy="101" r="15"/><text x="177" y="101">4</text></g>
+          <g class="willie-target" id="willie-zone-5" onclick="willieSelectTarget(5)" role="button" tabindex="0" aria-label="Target 5, left hook to body" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(5)}"><circle cx="131" cy="171" r="15"/><text x="131" y="171">5</text></g>
+          <g class="willie-target" id="willie-zone-6" onclick="willieSelectTarget(6)" role="button" tabindex="0" aria-label="Target 6, right hook to body" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(6)}"><circle cx="189" cy="171" r="15"/><text x="189" y="171">6</text></g>
+          <g class="willie-target" id="willie-zone-7" onclick="willieSelectTarget(7)" role="button" tabindex="0" aria-label="Target 7, jab to head" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(7)}"><circle cx="160" cy="54" r="15"/><text x="160" y="54">7</text></g>
+          <g class="willie-target" id="willie-zone-8" onclick="willieSelectTarget(8)" role="button" tabindex="0" aria-label="Target 8, jab to body" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();willieSelectTarget(8)}"><circle cx="160" cy="205" r="15"/><text x="160" y="205">8</text></g>
+          <text x="160" y="383" text-anchor="middle" fill="#94a3b8" font-size="10">FRONT TARGET MAP · HISTORICAL WILLIE NUMBERING</text>
+        </svg></div><div class="willie-number-grid" id="willieNumberGrid"><button type="button" id="willie-pick-1" onclick="willieSelectTarget(1)">1</button><button type="button" id="willie-pick-2" onclick="willieSelectTarget(2)">2</button><button type="button" id="willie-pick-3" onclick="willieSelectTarget(3)">3</button><button type="button" id="willie-pick-4" onclick="willieSelectTarget(4)">4</button><button type="button" id="willie-pick-5" onclick="willieSelectTarget(5)">5</button><button type="button" id="willie-pick-6" onclick="willieSelectTarget(6)">6</button><button type="button" id="willie-pick-7" onclick="willieSelectTarget(7)">7</button><button type="button" id="willie-pick-8" onclick="willieSelectTarget(8)">8</button></div></div>
+        <div><div class="willie-callout" aria-live="polite"><div class="training-meta">Last call / selected target</div><div class="call-number" id="willieCurrentNumber">—</div><div class="call-label" id="willieCurrentTarget">Ready when you are</div><p id="willieProgress" class="system-note">No drill running.</p></div>
+          <div class="action-row"><button class="btn btn-green" onclick="willieNextCall()">Call random number</button><button class="btn btn-secondary" onclick="willieStartDrill()">Start drill</button><button class="btn btn-secondary" onclick="willieStopDrill()">Stop</button></div>
+          <p class="system-note" id="willieVoiceStatus" aria-live="polite">Voice output uses the device’s available speech engine. If unavailable, follow the visible number and highlighted target.</p>
+          <div class="training-card"><h3>Target legend</h3><div id="willieLegend"></div></div>
+        </div>
+      </div>
+      <div class="training-card"><h3>How to run the drill</h3><ol><li>Start with 2–3-number calls at a comfortable pace.</li><li>Strike the called zone with clean mechanics, return to guard, and keep your feet balanced.</li><li>Build speed only when the target, punch choice and defence stay correct.</li><li>Use the Stop button between rounds; do not chase fatigue with sloppy or painful punches.</li></ol><p class="system-note">The diagram is a teaching schematic, not a literal anatomical map or a substitute for a coach’s target legend. Historical numbers 1–8: left hook to jaw; right hook to jaw; left uppercut; right uppercut; left hook to body; right hook to body; jab to head; jab to body.</p></div>
+    </div>
+  </section>
+
+  <section id="view-coach" class="hidden">
+    <p class="eyebrow">OPERATIONS / DAILY COACH</p><h2 class="view-title">Daily Coach</h2>
+    <p class="view-subtitle">Plans your day from your tasks, weekly schedule, habits, quiz results and exam dates. A rules-based coach running on this phone: it is not an AI model and nothing leaves your device.</p>
+    <div class="coach-chips" id="coachChips"></div>
+    <div class="coach-log" id="coachLog" aria-live="polite"></div>
+    <form class="coach-input" onsubmit="return coachSubmit(event)"><input id="coachInput" type="text" maxlength="200" autocomplete="off" placeholder="Try: I have 30 minutes…" aria-label="Ask the coach"><button class="btn btn-primary" type="submit">Send</button></form>
+    <p class="system-note" style="margin-top:4px">Exam dates live in <button class="link-btn" type="button" onclick="showView('exams')">Study → Exams &amp; papers</button>.</p>
+  </section>
+
+  <section id="view-exams" class="hidden">
+    <p class="eyebrow">STUDY / EXAMS</p><h2 class="view-title">Exams &amp; papers</h2>
+    <p class="view-subtitle">Exam countdown, revision pace and your past-paper results in one place.</p>
+    <div id="examActions" class="row-actions"></div>
+    <div class="section-kicker">Countdown</div>
+    <div id="examList"></div>
+    <div class="form-panel"><h3 style="margin:0 0 8px;font-size:14px">Add an exam</h3>
+      <div class="field"><label for="examName">Name</label><input id="examName" maxlength="80" placeholder="Biology Paper 1"></div>
+      <div class="field"><label for="examDate">Date</label><input id="examDate" type="date"></div>
+      <div class="field"><label for="examSubject">Subject</label><select id="examSubject"><option>Chemistry</option><option>Biology</option><option>Maths</option><option>Other</option></select></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="addExam()">Add exam</button>
+      <p class="system-note" style="margin-top:8px">Mark note topics as revised in Notes and the countdown shows how many you must cover per day.</p></div>
+    <div class="section-kicker">Past papers</div>
+    <div id="paperSources"></div>
+    <div id="paperSummary"></div>
+    <div id="paperList"></div>
+    <div id="paperForm"></div>
+  </section>
+
+  <section id="view-cards" class="hidden">
+    <p class="eyebrow">STUDY / FLASHCARDS</p><h2 class="view-title">Flashcards</h2>
+    <p class="view-subtitle">Cards are built from your notes. Try to recall the points, flip, then rate yourself. Cards you miss come back sooner.</p>
+    <div id="cardsBody"></div>
+  </section>
+
+  <section id="view-progress" class="hidden">
+    <p class="eyebrow">TRAIN / PROGRESS</p><h2 class="view-title">Progress</h2>
+    <p class="view-subtitle">Strength trends from your workout log, stalled lifts, and how you have been sleeping and recovering.</p>
+    <div id="progressBody"></div>
+  </section>
+
+  <section id="view-blurt" class="hidden">
+    <p class="eyebrow">STUDY / BLURT</p><h2 class="view-title">Blurt</h2>
+    <p class="view-subtitle">Pick a topic, close your notes, and write everything you remember. The app checks it against the note points and shows what you missed.</p>
+    <div id="blurtBody"></div>
+  </section>
+
+  <section id="view-mistakes" class="hidden">
+    <p class="eyebrow">STUDY / MISTAKES</p><h2 class="view-title">Mistake book</h2>
+    <p class="view-subtitle">Collected automatically from the quiz, flashcards and blurting. Get each one right twice in a row and it clears.</p>
+    <div id="mistakesBody"></div>
+  </section>
+
+  <section id="view-spec" class="hidden">
+    <p class="eyebrow">STUDY / SPECIFICATION</p><h2 class="view-title">Spec checklist</h2>
+    <p class="view-subtitle">Rate each point of the official specification: ✗ not yet, ~ shaky, ✓ confident. Red points feed the Coach.</p>
+    <div id="specBody"></div>
+  </section>
+
+  <section id="view-camp" class="hidden">
+    <p class="eyebrow">TRAIN / FIGHT CAMP</p><h2 class="view-title">Fight camp</h2>
+    <p class="view-subtitle">Countdown to your bout, the phase you are in, and whether your weight is on track for the weigh-in.</p>
+    <div id="campBody"></div>
+  </section>
+
+  <section id="view-timer" class="hidden">
+    <p class="eyebrow">OPERATIONS / FOCUS SESSION</p><h2 class="view-title">Focus Mode</h2><p class="view-subtitle">Choose a task to give the session a clear purpose. Starting a timer never changes task status automatically.</p>
+    <div class="focus-task-panel">
+      <label for="focusTaskSelect" class="metric-label">SESSION OBJECTIVE</label>
+      <select id="focusTaskSelect" onchange="updateFocusObjective()"><option value="">Independent focus session</option></select>
+      <p id="focusObjectiveText" class="focus-objective">Select a task or run a standalone session.</p>
+      <div class="pp-grid" style="margin:8px 0"><div class="field"><label for="focusSubject">Subject</label><select id="focusSubject" onchange="this.dataset.touched=1"><option>Chemistry</option><option>Biology</option><option>Maths</option><option>Other</option></select></div><div class="field"><label for="focusTopic">Topic (optional)</label><input id="focusTopic" maxlength="80" placeholder="e.g. buffers"></div></div>
+      <button class="btn btn-primary" style="width:100%" onclick="startTaskFocus()">Start study session</button>
+      <p class="system-note" style="margin-top:6px">Study sessions are logged when the timer finishes, or when you reset after 5+ minutes.</p>
+    </div>
+    <div id="studyTimeBox"></div>
+    <div class="card iv-card" id="ivCard">
+      <p class="eyebrow" style="margin:0 0 6px">BOXING ROUNDS</p>
+      <div class="iv-phase" id="ivPhase">READY</div>
+      <div class="iv-clock" id="ivClock">03:00</div>
+      <div class="iv-meta" id="ivMeta"></div>
+      <div class="iv-bar"><div id="ivBar"></div></div>
+      <div class="timer-controls"><button id="ivStartBtn" class="btn btn-primary" onclick="ivStart()">Start rounds</button><button id="ivPauseBtn" class="btn btn-secondary" onclick="ivPause()" disabled>Pause</button><button class="btn btn-secondary" onclick="ivStop()">Stop</button></div>
+      <div class="iv-presets"><button onclick="ivPreset(8,180,60)">8 × 3:00</button><button onclick="ivPreset(6,120,60)">6 × 2:00</button><button onclick="ivPreset(10,60,30)">10 × 1:00</button></div>
+      <div class="iv-fields">
+        <label>Rounds<input id="ivRounds" type="number" inputmode="numeric" min="1" max="30" onchange="ivInputsChanged()"></label>
+        <label>Round<select id="ivRoundSec" onchange="ivInputsChanged()"></select></label>
+        <label>Rest<select id="ivRestSec" onchange="ivInputsChanged()"></select></label>
+        <label>Get ready<select id="ivPrepSec" onchange="ivInputsChanged()"></select></label>
+      </div>
+      <label class="iv-warn"><input type="checkbox" id="ivWarn" onchange="ivInputsChanged()"> 10-second warning beep</label>
+      <div class="iv-combo-row"><label class="iv-warn"><input type="checkbox" id="ivCombos" onchange="ivInputsChanged()"> Call combos during rounds</label><select id="ivComboPace" onchange="ivInputsChanged()" aria-label="Combo pace"><option value="5">Steady</option><option value="3.5">Sharp</option><option value="2.5">Fast</option></select></div>
+      <div class="iv-combo" id="ivCombo" aria-live="polite"></div>
+    </div>
+    <div class="card timer-card">
+      <p id="timerDisplay" class="timer-display">00:00</p>
+      <div class="timer-controls">
+        <button onclick="startTimer()" class="btn btn-primary">Start</button>
+        <button onclick="pauseTimer()" class="btn btn-secondary">Pause</button>
+        <button onclick="resetTimer()" class="btn btn-secondary">Reset</button>
+      </div>
+    </div>
+    <div class="preset-grid">
+      <button onclick="startPreset(180)">🥊 Boxing Round 3:00</button>
+      <button onclick="startPreset(60)">😮‍💨 Round Rest 1:00</button>
+      <button onclick="startStudyFocus(1500)">📚 Study Focus 25:00</button>
+      <button onclick="startPreset(300)">☕ Study Break 5:00</button>
+    </div>
+    <div class="custom-row">
+      <input id="customMins" type="number" min="1" placeholder="Custom mins">
+      <button onclick="customStart()" class="btn btn-primary">Go</button>
+    </div>
+  </section>
+
+  <section id="view-checklist" class="hidden">
+    <p class="checklist-hint">Run this before pressing/tricep work. Anything fails → regress today's session per the substitution protocol.</p>
+    <div id="checklistList"></div>
+    <button onclick="resetChecklist()" class="reset-btn">Reset Checklist</button>
+  </section>
+
+  <section id="view-notes" class="hidden">
+    <div class="subject-tabs">
+      <button data-subject="Chemistry" onclick="setNotesSubject('Chemistry')">Chemistry</button>
+      <button data-subject="Biology" onclick="setNotesSubject('Biology')">Biology</button>
+      <button data-subject="Maths" onclick="setNotesSubject('Maths')">Maths</button>
+      <button data-subject="Custom" onclick="setNotesSubject('Custom')">My Notes</button>
+    </div>
+    <div class="notes-search">
+      <label for="notesSearchInput">Search every notes section</label>
+      <div class="notes-search-row">
+        <input id="notesSearchInput" type="search" placeholder="Search terms, equations, reactions…" autocomplete="off" oninput="scheduleNotesSearch(this.value)">
+        <button type="button" onclick="clearNotesSearch()">Clear</button>
+      </div>
+      <p class="notes-search-help">Searches Biology, Chemistry, Maths and your saved notes. Results show the topic and section; tap a result to open it.</p>
+    </div>
+    <div id="notesSearchResults" class="search-results" aria-live="polite"></div>
+    <p class="checklist-hint">Tap a topic to expand. Last bullet (⭐) is the A*-level tip — the bit that separates a B answer from an A*.</p>
+    <div id="notesList"></div>
+  </section>
+
+  <section id="view-test" class="hidden">
+    <div class="subject-tabs" id="testSubjectTabs">
+      <button data-subject="All" onclick="setTestSubject('All')" class="active-subject">All</button>
+      <button data-subject="Chemistry" onclick="setTestSubject('Chemistry')">Chem</button>
+      <button data-subject="Biology" onclick="setTestSubject('Biology')">Bio</button>
+      <button data-subject="Maths" onclick="setTestSubject('Maths')">Maths</button>
+    </div>
+    <p class="checklist-hint">Randomised exam-style practice informed by PMT topic-question and mark-scheme patterns. Questions are original; automated marking is a guide, so compare your answer with the model answer and mark points.</p>
+    <div id="testInsights"></div>
+    <div id="testBody"></div>
+  </section>
+
+  <section id="view-macros" class="hidden">
+    <p class="eyebrow">TRAIN / BODY &amp; FOOD</p><h2 class="view-title">Body &amp; food</h2>
+    <div id="bodyweightBox"></div>
+    <div class="section-kicker">Macro calculator</div>
+    <p class="checklist-hint">Macro calculator. Estimates are a starting point — track your weight and strength for 2 weeks and adjust calories by ±100–150 if nothing moves.</p>
+    <div class="note-form" style="margin-bottom:12px">
+      <div class="mc-toggle" id="mcSexToggle">
+        <button type="button" data-v="male" onclick="mcSetSex('male')">Male</button>
+        <button type="button" data-v="female" onclick="mcSetSex('female')">Female</button>
+      </div>
+      <div class="mc-row">
+        <div class="mc-field"><label for="mcAge">Age (years)</label><input id="mcAge" type="number" inputmode="decimal" min="14" max="100" oninput="mcSaveInputs()"></div>
+        <div class="mc-field"><label for="mcHeight">Height (cm)</label><input id="mcHeight" type="number" inputmode="decimal" min="120" max="230" oninput="mcSaveInputs()"></div>
+      </div>
+      <div class="mc-row">
+        <div class="mc-field"><label for="mcWeight">Weight (kg)</label><input id="mcWeight" type="number" inputmode="decimal" min="35" max="250" oninput="mcSaveInputs()"></div>
+        <div class="mc-field"><label for="mcBodyFat">Body fat % (optional)</label><input id="mcBodyFat" type="number" inputmode="decimal" min="3" max="60" placeholder="leave blank if unknown" oninput="mcSaveInputs()"></div>
+      </div>
+      <div class="mc-field" style="margin-bottom:10px">
+        <label for="mcActivity">Activity level</label>
+        <select id="mcActivity" onchange="mcSaveInputs()">
+          <option value="1.2">Sedentary — desk/study, little exercise (×1.2)</option>
+          <option value="1.375">Light — training 1–3 days/week (×1.375)</option>
+          <option value="1.55">Moderate — training 3–5 days/week (×1.55)</option>
+          <option value="1.725">High — hard training 6–7 days/week (×1.725)</option>
+          <option value="1.9">Very high — physical job plus daily training (×1.9)</option>
+        </select>
+      </div>
+      <div class="mc-field"><label>Goal</label></div>
+      <div class="mc-toggle" id="mcGoalToggle">
+        <button type="button" data-v="cut" onclick="mcSetGoal('cut')">Fat loss</button>
+        <button type="button" data-v="maintain" onclick="mcSetGoal('maintain')">Maintain</button>
+        <button type="button" data-v="bulk" onclick="mcSetGoal('bulk')">Build</button>
+      </div>
+      <button class="add-note-btn" style="margin-bottom:0" onclick="calculateMacros()">Calculate Macros</button>
+    </div>
+    <div id="macroResults"></div>
+  </section>
+
+  <section id="view-lifeos" class="hidden">
+    <p class="eyebrow">OPERATIONS / CONNECTED PERSONAL SYSTEM</p><h2 class="view-title">Life OS</h2>
+    <p class="view-subtitle">Plan capacity, track training and wellbeing, manage personal admin, and review evidence. Recommendations never change your plan without approval.</p>
+    <div class="lifeos-stat-grid" id="lifeosOverview"></div>
+    <div class="lifeos-grid">
+      <div class="lifeos-card"><h3>Quick Capture Inbox</h3><p>Capture an idea, reminder or resource now. Organise it later.</p><label for="lifeCaptureText">Capture</label><input id="lifeCaptureText" maxlength="240" placeholder="An idea, reminder, or something to look into…"><div class="lifeos-fields"><div><label for="lifeCaptureType">Type</label><select id="lifeCaptureType"><option value="idea">Idea</option><option value="task">Task</option><option value="resource">Resource</option></select></div><div><label for="lifeCaptureArea">Life area</label><select id="lifeCaptureArea"><option value="personal">Personal</option><option value="study">Study</option><option value="health">Health / fitness</option><option value="work">Work / career</option><option value="home">Home / errands</option><option value="finance">Finance</option><option value="admin">Life admin</option></select></div></div><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="lifeAddCapture()">＋ Capture</button><div id="lifeCaptureList"></div></div>
+      <div class="lifeos-card"><h3>Capacity and schedule proposals</h3><p>Compare task estimates against your real available time. Proposals are previews; nothing changes until you approve a specific edit.</p><div class="lifeos-fields"><div><label for="lifeAvailableHours">Available hours this week</label><input id="lifeAvailableHours" type="number" min="1" max="100" value="20"></div><div><label for="lifeFixedHours">Fixed commitments (hours)</label><input id="lifeFixedHours" type="number" min="0" max="100" value="0"></div></div><button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="lifeRenderCapacity()">Recalculate capacity</button><div id="lifeCapacityResult"></div><hr style="border-color:var(--line);margin:14px 0"><h3>Propose a due-date change</h3><label for="lifeRescheduleTask">Open task</label><select id="lifeRescheduleTask"></select><label for="lifeRescheduleDate">Proposed new due date</label><input type="date" id="lifeRescheduleDate"><p id="lifeReschedulePreview" class="lifeos-note">Select a task and date to preview the change.</p><button class="btn btn-green" style="width:100%" onclick="lifeApproveReschedule()">Review and approve change</button></div>
+      <div class="lifeos-card"><h3>Personal finance ledger</h3><p>Manual local tracking only; not connected to your bank. Amounts are recorded in GBP.</p><div class="lifeos-fields"><div><label for="lifeMoneyType">Entry</label><select id="lifeMoneyType"><option value="expense">Expense</option><option value="income">Income</option></select></div><div><label for="lifeMoneyAmount">Amount (£)</label><input id="lifeMoneyAmount" type="number" min="0.01" max="10000000" step="0.01" placeholder="12.50"></div><div><label for="lifeMoneyCategory">Category</label><select id="lifeMoneyCategory"><option>Food</option><option>Transport</option><option>Education</option><option>Fitness</option><option>Subscriptions</option><option>Home</option><option>Income</option><option>Other</option></select></div><div><label for="lifeMoneyDate">Date</label><input id="lifeMoneyDate" type="date"></div></div><label for="lifeMoneyNote">Note (optional)</label><input id="lifeMoneyNote" maxlength="160" placeholder="What was it for?"><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="lifeAddMoney()">＋ Save transaction</button><div id="lifeMoneySummary"></div><div id="lifeMoneyList"></div><hr style="border-color:var(--line);margin:14px 0"><h3>Savings goal</h3><div class="lifeos-fields"><div><label for="lifeSavingsName">Goal</label><input id="lifeSavingsName" maxlength="100" placeholder="Emergency fund"></div><div><label for="lifeSavingsTarget">Target (£)</label><input id="lifeSavingsTarget" type="number" min="0" max="10000000" step="0.01" placeholder="500"></div><div><label for="lifeSavingsCurrent">Already saved (£)</label><input id="lifeSavingsCurrent" type="number" min="0" max="10000000" step="0.01" placeholder="0"></div></div><button class="btn btn-secondary" style="margin-top:8px" onclick="lifeSaveSavings()">Save goal</button><div id="lifeSavingsSummary"></div></div>
+      <div class="lifeos-card"><h3>Nutrition and meal log</h3><p>Log estimates to complement your existing macro calculator. Nutrition numbers are only as accurate as the entries.</p><div class="lifeos-fields"><div><label for="lifeMealDate">Date</label><input id="lifeMealDate" type="date"></div><div><label for="lifeMealName">Meal / food</label><input id="lifeMealName" maxlength="120" placeholder="Lunch"></div><div><label for="lifeMealCalories">Calories (kcal)</label><input id="lifeMealCalories" type="number" min="0" max="10000" placeholder="650"></div><div><label for="lifeMealProtein">Protein (g)</label><input id="lifeMealProtein" type="number" min="0" max="500" placeholder="35"></div></div><label for="lifeMealNote">Notes (optional)</label><input id="lifeMealNote" maxlength="160" placeholder="Approximate portion or source"><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="lifeAddMeal()">＋ Log meal</button><div id="lifeMealSummary"></div><div id="lifeMealList"></div></div>
+      <div class="lifeos-card"><h3>Recurring routines</h3><p>Keep recurring actions lightweight. Check-ins are dated and stored locally.</p><label for="lifeRoutineName">Routine name</label><input id="lifeRoutineName" maxlength="120" placeholder="Pack gym kit for tomorrow"><div class="lifeos-fields"><div><label for="lifeRoutineArea">Area</label><select id="lifeRoutineArea"><option>Personal</option><option>Study</option><option>Training</option><option>Home</option><option>Health</option><option>Admin</option></select></div><div><label for="lifeRoutineCadence">Cadence</label><select id="lifeRoutineCadence"><option>Daily</option><option>Weekdays</option><option>Weekly</option></select></div></div><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="lifeAddRoutine()">＋ Add routine</button><div id="lifeRoutineList"></div></div>
+      <div class="lifeos-card"><h3>Reading and resource library</h3><p>Save books, articles, courses and useful resources. Titles and notes remain available offline; source URLs need a connection to open.</p><label for="lifeReadTitle">Title</label><input id="lifeReadTitle" maxlength="180" placeholder="Book, article, course…"><label for="lifeReadUrl">URL (optional)</label><input id="lifeReadUrl" type="url" maxlength="500" placeholder="https://…"><label for="lifeReadNotes">Key takeaway / notes</label><textarea id="lifeReadNotes" rows="2" maxlength="1200" placeholder="What do you want to remember?"></textarea><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="lifeAddReading()">＋ Save resource</button><div id="lifeReadingList"></div></div>
+      <div class="lifeos-card"><h3>Decision journal</h3><p>Record what you decided, why, what you expect, and when to review the outcome.</p><label for="lifeDecisionTitle">Decision</label><input id="lifeDecisionTitle" maxlength="180" placeholder="What am I deciding?"><label for="lifeDecisionReason">Reasoning and alternatives</label><textarea id="lifeDecisionReason" rows="2" maxlength="1500" placeholder="Options, constraints and why this choice…"></textarea><div class="lifeos-fields"><div><label for="lifeDecisionExpectation">Expected outcome</label><input id="lifeDecisionExpectation" maxlength="500" placeholder="What do I expect?"></div><div><label for="lifeDecisionReview">Review date</label><input id="lifeDecisionReview" type="date"></div></div><button class="btn btn-green" style="width:100%;margin-top:10px" onclick="lifeAddDecision()">＋ Record decision</button><div id="lifeDecisionList"></div></div>
+      <div class="lifeos-card"><h3>Progress analytics</h3><p>Descriptive indicators from data you actually log; estimates and recommendations are not treated as measured facts.</p><div id="lifeAnalytics"></div><button class="btn btn-secondary" style="width:100%;margin-top:8px" onclick="lifeRenderAll()">Refresh analytics</button><div class="lifeos-note">Training indicator: estimated 1RM uses the Epley equation only when load and reps are numeric. It is an estimate, not a measured max. Avoid testing maximal lifts when fatigued or without appropriate supervision.</div></div>
+      <div class="lifeos-card"><h3>Change history and proposals</h3><p>Recent changes made through Life OS and approved plan edits. This is a lightweight local audit trail, not a complete browser-wide undo system.</p><div id="lifeChangeList"></div><button class="btn btn-secondary" style="margin-top:8px" onclick="lifeClearHistory()">Clear history</button></div>
+      <div class="lifeos-card"><h3>Offline and storage diagnostics</h3><p>Check the current browser connection, local storage availability and app-shell status. This cannot prove every cached route works offline.</p><div id="lifeDiagnostics"></div><button class="btn btn-secondary" style="width:100%;margin-top:8px" onclick="lifeRenderDiagnostics()">Run checks</button><button class="btn btn-secondary" style="width:100%;margin-top:8px" onclick="exportBackup()">Export full backup</button><p class="lifeos-note">Bridge Protocol is local-first. Do not clear site data before exporting a backup. Existing JSON backup/restore remains the main recovery mechanism.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<nav aria-label="Main navigation">
+  <button onclick="goHub('home')" id="nav-home" class="tab-active" aria-label="Home: today, coach, weekly review"><span>⌂</span>Home</button>
+  <button onclick="goHub('plan')" id="nav-plan" aria-label="Plan: tasks, calendar, projects, habits, week plan"><span>☑</span>Plan</button>
+  <button onclick="goHub('study')" id="nav-study" aria-label="Study: notes, flashcards, quiz, exams"><span>✎</span>Study</button>
+  <button onclick="goHub('train')" id="nav-train" aria-label="Train: training, timer, progress, body, tendon check"><span>🥊</span>Train</button>
+  <button onclick="goHub('more')" id="nav-more" aria-label="All sections" aria-expanded="false" aria-controls="sectionMenuBackdrop"><span>☰</span>More</button>
+</nav>
+<div id="sectionMenuBackdrop" class="section-menu-backdrop hidden" onclick="if(event.target===this)closeOverlay()" aria-hidden="true">
+  <section class="section-menu" id="sectionMenu" role="dialog" aria-modal="true" aria-labelledby="sectionMenuTitle">
+    <div class="section-menu-head"><h2 id="sectionMenuTitle">All sections</h2><div style="display:flex;gap:6px;align-items:center"><button class="section-menu-close" onclick="openGlobalSearch()" aria-label="Search all content">Search all ⌕</button><button class="section-menu-close" onclick="closeOverlay()" aria-label="Close section menu">Close ✕</button></div></div>
+    <input id="sectionMenuSearch" class="section-menu-search" type="search" placeholder="Find a section…" aria-label="Find a section" oninput="filterSectionMenu(this.value)">
+    <div class="section-menu-group" data-menu-group="Home"><h3>Home</h3><div class="section-menu-grid">
+      <button class="section-menu-item" data-menu-label="command home dashboard today brief" onclick="navigateFromMenu('command')"><span>⌂</span><span>Today<small>Daily brief and top 3</small></span></button>
+      <button class="section-menu-item" data-menu-label="coach daily plan recommend what to do today assistant chat" onclick="navigateFromMenu('coach')"><span>✦</span><span>Coach<small>Plan your day</small></span></button>
+      <button class="section-menu-item" data-menu-label="weekly review reflection" onclick="navigateFromMenu('weekly')"><span>◷</span><span>Weekly review<small>Reflect and adjust</small></span></button>
+    </div></div>
+    <div class="section-menu-group" data-menu-group="Plan"><h3>Plan</h3><div class="section-menu-grid">
+      <button class="section-menu-item" data-menu-label="tasks actions priorities to do" onclick="navigateFromMenu('tasks')"><span>☑</span><span>Tasks<small>Priorities and actions</small></span></button>
+      <button class="section-menu-item" data-menu-label="planner calendar month dates deadlines" onclick="navigateFromMenu('planner')"><span>▦</span><span>Calendar<small>Deadlines by date</small></span></button>
+      <button class="section-menu-item" data-menu-label="projects goals milestones" onclick="navigateFromMenu('projects')"><span>◎</span><span>Projects<small>Goals and milestones</small></span></button>
+      <button class="section-menu-item" data-menu-label="habits routines streaks" onclick="navigateFromMenu('habits')"><span>↻</span><span>Habits<small>Daily check-ins</small></span></button>
+      <button class="section-menu-item" data-menu-label="schedule timetable week plan edit" onclick="navigateFromMenu('schedule')"><span>▤</span><span>Week plan<small>Training and study timetable</small></span></button>
+    </div></div>
+    <div class="section-menu-group" data-menu-group="Study"><h3>Study</h3><div class="section-menu-grid">
+      <button class="section-menu-item" data-menu-label="knowledge notes revision biology chemistry maths revised" onclick="navigateFromMenu('notes')"><span>▤</span><span>Notes<small>Biology, Chemistry, Maths</small></span></button>
+      <button class="section-menu-item" data-menu-label="flashcards cards recall spaced repetition" onclick="navigateFromMenu('cards')"><span>❏</span><span>Flashcards<small>Spaced-repetition recall</small></span></button>
+      <button class="section-menu-item" data-menu-label="test quiz exam questions practice weak topics" onclick="navigateFromMenu('test')"><span>◇</span><span>Quiz<small>Exam-style questions</small></span></button>
+      <button class="section-menu-item" data-menu-label="blurt blurting recall write memory active" onclick="navigateFromMenu('blurt')"><span>✍</span><span>Blurt<small>Write what you remember, get marked</small></span></button>
+      <button class="section-menu-item" data-menu-label="mistakes mistake book errors wrong review" onclick="navigateFromMenu('mistakes')"><span>⚑</span><span>Mistakes<small>Things to fix, auto-collected</small></span></button>
+      <button class="section-menu-item" data-menu-label="spec specification checklist rag red amber green ocr edexcel" onclick="navigateFromMenu('spec')"><span>☰</span><span>Spec checklist<small>OCR Biology & Chemistry, Edexcel Maths</small></span></button>
+      <button class="section-menu-item" data-menu-label="exams countdown past papers marks grades" onclick="navigateFromMenu('exams')"><span>⏳</span><span>Exams & papers<small>Countdown and past papers</small></span></button>
+    </div></div>
+    <div class="section-menu-group" data-menu-group="Train"><h3>Train</h3><div class="section-menu-grid">
+      <button class="section-menu-item" data-menu-label="training workout strength boxing willie bag log" onclick="navigateFromMenu('training')"><span>🥊</span><span>Training<small>Plan, log, Willie bag</small></span></button>
+      <button class="section-menu-item" data-menu-label="timer rounds boxing interval focus pomodoro" onclick="navigateFromMenu('timer')"><span>◴</span><span>Timer<small>Boxing rounds and focus</small></span></button>
+      <button class="section-menu-item" data-menu-label="progress charts lifts rpe stall recovery sleep" onclick="navigateFromMenu('progress')"><span>↗</span><span>Progress<small>Lifts, RPE, recovery</small></span></button>
+      <button class="section-menu-item" data-menu-label="macros nutrition protein calories bodyweight weight" onclick="navigateFromMenu('macros')"><span>＋</span><span>Body & food<small>Weight log and macros</small></span></button>
+      <button class="section-menu-item" data-menu-label="fight camp bout weigh in weight class countdown" onclick="navigateFromMenu('camp')"><span>🏆</span><span>Fight camp<small>Countdown, phases, making weight</small></span></button>
+      <button class="section-menu-item" data-menu-label="checklist tendon elbow triceps safety" onclick="navigateFromMenu('checklist')"><span>✓</span><span>Tendon check<small>Pre-pressing safety checklist</small></span></button>
+    </div></div>
+    <div class="section-menu-group" data-menu-group="More"><h3>More</h3><div class="section-menu-grid">
+      <button class="section-menu-item" data-menu-label="life os finance money meals nutrition routines reading decisions analytics" onclick="navigateFromMenu('lifeos')"><span>◈</span><span>Life OS<small>Money, meals, routines</small></span></button>
+      <button class="section-menu-item" data-menu-label="system settings backup restore appearance light mode text size offline" onclick="navigateFromMenu('system')"><span>⚙</span><span>Settings<small>Backup, appearance, data</small></span></button>
+    </div></div>
+    <p id="sectionMenuEmpty" class="section-menu-empty">No matching sections.</p>
+  </section>
+</div>
+<div id="globalSearchBackdrop" class="global-search-backdrop hidden" onclick="if(event.target===this)closeOverlay()" aria-hidden="true">
+  <section class="global-search-panel" role="dialog" aria-modal="true" aria-labelledby="globalSearchTitle">
+    <div class="global-search-head"><h2 id="globalSearchTitle">Search all Bridge Protocol</h2><button class="section-menu-close" onclick="closeOverlay()" aria-label="Close global search">Close ✕</button></div>
+    <input id="globalSearchInput" class="global-search-input" type="search" placeholder="Search notes, tasks, projects, habits, training…" aria-label="Search all Bridge Protocol content" autocomplete="off">
+    <p class="global-search-hint">Searches locally on this device · Ctrl/⌘ + Shift + F · Select a result to open its section</p>
+    <div id="globalSearchResults" class="global-search-results" aria-live="polite"><p class="search-empty">Enter at least 2 characters to search.</p></div>
+  </section>
+</div>
+
+<div id="musicBackdrop" class="global-search-backdrop hidden" onclick="if(event.target===this)closeOverlay()" aria-hidden="true">
+  <section class="global-search-panel" role="dialog" aria-modal="true" aria-labelledby="musicTitle">
+    <div class="global-search-head"><h2 id="musicTitle">♪ Music</h2><button class="section-menu-close" onclick="closeOverlay()" aria-label="Close music">Close ✕</button></div>
+    <p class="global-search-hint">Your YouTube Music playlists. Tap ▶ to open one in the YouTube Music app, then come back here.</p>
+    <div id="musicBody"></div>
+  </section>
+</div>
+
+<script src="data.js"></script>
+<script src="specs.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

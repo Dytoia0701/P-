@@ -1,0 +1,301 @@
+# Notes coverage report (v35)
+
+Every point of the three specifications is now covered by the notes. In v34 each point was judged against the notes as **covered**, **partly covered** or **missing**. In v35 a new note section was written for every partly covered or missing point (269 sections), then each section was fact-checked by a separate AI reviewer against the spec and standard A-level content, with every worked example recalculated. The new sections are in Notes under **"Spec completion notes"** at the end of each subject; in Study → Spec checklist each point links straight to its note.
+
+This is AI-written revision material. It was checked carefully, but check anything surprising against your textbook or teacher.
+
+| Subject | Points | v34 covered | v34 partly | v34 missing | v35 covered | Sections fact-checked | Corrected by checker |
+|---|---|---|---|---|---|---|---|
+| OCR A Level Biology A (H420) | 244 | 129 | 95 | 20 | **244 (100%)** | 115 | 14 |
+| OCR A Level Chemistry A (H432) | 291 | 201 | 77 | 13 | **291 (100%)** | 90 | 17 |
+| Pearson Edexcel A Level Mathematics (9MA0) | 89 | 25 | 54 | 10 | **89 (100%)** | 64 | 27 |
+
+## Notes on accuracy
+- **Maths formula booklet:** the new Maths notes do not claim that a formula is or is not printed in the formula booklet, because the booklet could not be checked here. Each one is labelled "learn this". The statistical tables (normal percentage points, correlation critical values, cumulative binomial) are referred to where used.
+- **Biology 6.3.2(e) (sensitive areas):** the case studies (Masai Mara, Terai, Galapagos, Antarctica, Snowdonia, Lake District, peat bogs) are described in general terms. Your textbook may use different examples.
+- **Biology 2.1.2 chromatography:** the TLC stationary phase is given as silica gel or alumina (aluminium oxide). Some textbooks say aluminium hydroxide.
+- **Biology spec version:** the OCR Biology spec used is v2.7 (Feb 2024), because the newer version could not be downloaded. Chemistry uses v3.1 (May 2026) for modules 1–5.3.1, and a school copy for 5.3.2 and Module 6. Maths uses 9MA0 Issue 4.
+
+## Errors found in the original notes (corrected in v34)
+- **Chemistry, polymers (6.2.3):** acid hydrolysis of a polyamide gives the **ammonium salt** of the amine (plus the carboxylic acid), not the free amine.
+- **Maths, vectors (Topic 10):** 3D vectors are on 9MA0. Vector line equations and the scalar product are **Further Maths** and are labelled as such.
+
+## What was added, point by point
+
+### OCR A Level Biology A (H420)
+
+- **1.1.3(c)** Use an appropriate number of significant figures in data and calculations — was partly covered; now in *Spec completion — 1.1.3 Analysis* · corrected by checker
+- **1.1.4(d)** Assess precision and accuracy: margins of error, percentage errors and apparatus uncertainties — was partly covered; now in *Spec completion — 1.1.4 Evaluation* · corrected by checker
+- **1.2.1(g)** Use suitable software and tools to process data, carry out research and report findings — was missing; now in *Spec completion — 1.2.1 Practical skills*
+- **1.2.1(h)** Use online and offline research skills, e.g. websites, textbooks and printed scientific sources — was missing; now in *Spec completion — 1.2.1 Practical skills*
+- **1.2.1(i)** Cite sources of information correctly — was missing; now in *Spec completion — 1.2.1 Practical skills*
+- **1.2.2(c)** Use laboratory glassware for a range of techniques, including serial dilutions — was partly covered; now in *Spec completion — 1.2.2 Use of apparatus and techniques* · corrected by checker
+- **1.2.2(d)** Use a light microscope at high and low power, including using a graticule — was partly covered; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **1.2.2(h)** Use organisms safely and ethically to measure (i) plant or animal responses; (ii) physiological functions — was partly covered; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **1.2.2(j)** Use dissection instruments safely and correctly — was missing; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **1.2.2(l)** Use ICT such as computer modelling, data loggers or data-processing software — was missing; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **2.1.1(a)** Use microscopy (light, TEM, SEM, laser scanning confocal) to observe eukaryotic cells and structures — was partly covered; now in *Spec completion — 2.1.1 Cell structure*
+- **2.1.1(b)** Prepare and examine light microscope slides; measure with an eyepiece graticule and stage micrometer — was partly covered; now in *Spec completion — 2.1.1 Cell structure*
+- **2.1.1(c)** Use staining in light microscopy, including differential staining — was missing; now in *Spec completion — 2.1.1 Cell structure* · corrected by checker
+- **2.1.1(g)** Describe the ultrastructure of eukaryotic cells and the function of each organelle — was partly covered; now in *Spec completion — 2.1.1 Cell structure*
+- **2.1.1(h)** Interpret photomicrographs (light, TEM, SEM) to identify cell components — was partly covered; now in *Spec completion — 2.1.1 Cell structure*
+- **2.1.2(a)** Explain hydrogen bonding in water and link its properties to roles as solvent, transport medium, coolant, habitat — was missing; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(c)** Recall the chemical elements in carbohydrates, lipids (C,H,O), proteins (+N,S) and nucleic acids (+N,P) — was missing; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(d)** Describe the ring structure and properties of glucose (alpha and beta) and the structure of ribose — was partly covered; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(n)** Describe structure and function of globular proteins: conjugated proteins (haemoglobin), a named enzyme, insulin — was partly covered; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(o)** Describe properties and functions of the fibrous proteins collagen, keratin and elastin — was partly covered; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(p)** Recall key inorganic ions and their symbols (e.g. Ca2+, Na+, K+, H+, NH4+, NO3-, HCO3-, Cl-, PO4 3-, OH-) — was missing; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(r)** Use quantitative methods to find concentrations: colorimetry and biosensors (outline of how they work) — was partly covered; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.2(s)** (i) Principles and uses of paper/thin layer chromatography incl. Rf values; (ii) practical analysis of solutions — was partly covered; now in *Spec completion — 2.1.2 Biological molecules*
+- **2.1.3(a)** Describe nucleotide structure; compare DNA and RNA nucleotides; purines, pyrimidines and pentose sugars — was partly covered; now in *Spec completion — 2.1.3 Nucleotides and nucleic acids*
+- **2.1.3(d)** (i) DNA structure: complementary base pairing, antiparallel strands, double helix; (ii) purify DNA by precipitation — was partly covered; now in *Spec completion — 2.1.3 Nucleotides and nucleic acids* · corrected by checker
+- **2.1.3(f)** Explain the genetic code (triplet, non-overlapping, degenerate, universal) and how genes code for polypeptides — was partly covered; now in *Spec completion — 2.1.3 Nucleotides and nucleic acids*
+- **2.1.4(a)** Explain how enzymes catalyse metabolic reactions at cell and whole-organism level, affecting structure/function — was partly covered; now in *Spec completion — 2.1.4 Enzymes* · corrected by checker
+- **2.1.4(b)** Give examples of enzymes acting intracellularly (catalase) and extracellularly (amylase, trypsin) — was partly covered; now in *Spec completion — 2.1.4 Enzymes*
+- **2.1.4(d)** (i) Effects of pH, temperature, enzyme and substrate concentration incl. Q10; (ii) investigate these practically — was partly covered; now in *Spec completion — 2.1.4 Enzymes*
+- **2.1.4(e)** Explain the roles of cofactors, coenzymes and prosthetic groups (e.g. Cl- for amylase, Zn2+, vitamins) — was partly covered; now in *Spec completion — 2.1.4 Enzymes*
+- **2.1.4(f)** Explain competitive/non-competitive, reversible/non-reversible inhibition, product inhibition, poisons, precursors — was partly covered; now in *Spec completion — 2.1.4 Enzymes*
+- **2.1.5(a)** Describe membrane roles: partially permeable barriers, sites of chemical reactions and cell signalling — was partly covered; now in *Spec completion — 2.1.5 Biological membranes*
+- **2.1.5(d)** (i) Diffusion, facilitated diffusion, active transport, endo/exocytosis; (ii) investigate diffusion in model cells — was partly covered; now in *Spec completion — 2.1.5 Biological membranes*
+- **2.1.6(c)** Describe the main stages of mitosis and changes to nuclear envelope, chromosomes, centrioles and spindle — was partly covered; now in *Spec completion — 2.1.6 Cell division, cell diversity and cellular organisation* · corrected by checker
+- **2.1.6(h)** Explain how specialised cells (e.g. erythrocytes, neutrophils, sperm, palisade, root hair, guard cells) are adapted — was partly covered; now in *Spec completion — 2.1.6 Cell division, cell diversity and cellular organisation*
+- **2.1.6(i)** Describe organisation into tissues, organs and organ systems (e.g. epithelia, cartilage, muscle, xylem, phloem) — was partly covered; now in *Spec completion — 2.1.6 Cell division, cell diversity and cellular organisation*
+- **2.1.6(j)** Describe the features of stem cells and their differentiation as a renewing source of undifferentiated cells — was partly covered; now in *Spec completion — 2.1.6 Cell division, cell diversity and cellular organisation*
+- **2.1.6(l)** Explain how xylem vessels and phloem sieve tubes are produced from meristems — was missing; now in *Spec completion — 2.1.6 Cell division, cell diversity and cellular organisation*
+- **2.1.6(m)** Discuss potential uses of stem cells: tissue repair, Alzheimer's/Parkinson's treatment, developmental research — was missing; now in *Spec completion — 2.1.6 Cell division, cell diversity and cellular organisation*
+- **3.1.1(c)** Describe mammalian gas exchange structures (trachea to alveoli) and roles of cartilage, cilia, goblet cells, muscle — was partly covered; now in *Spec completion — 3.1.1 Exchange surfaces* · corrected by checker
+- **3.1.1(e)** Relate vital capacity, tidal volume, breathing rate and oxygen uptake using spirometer/data-logger data — was partly covered; now in *Spec completion — 3.1.1 Exchange surfaces*
+- **3.1.1(f)** Explain ventilation and gas exchange in bony fish (gills, countercurrent flow) and insects (spiracles, tracheae) — was partly covered; now in *Spec completion — 3.1.1 Exchange surfaces* · corrected by checker
+- **3.1.1(g)** Dissect, examine and draw the gas exchange system of a bony fish and/or insect trachea — was missing; now in *Spec completion — 3.1.1 Exchange surfaces*
+- **3.1.1(h)** Examine microscope slides to show the histology of exchange surfaces — was missing; now in *Spec completion — 3.1.1 Exchange surfaces*
+- **3.1.2(b)** Compare single, double, open and closed circulatory systems in insects, fish and mammals — was partly covered; now in *Spec completion — 3.1.2 Transport in animals*
+- **3.1.2(d)** Explain tissue fluid formation (hydrostatic vs oncotic pressure) and compare blood, tissue fluid and lymph — was partly covered; now in *Spec completion — 3.1.2 Transport in animals*
+- **3.1.2(e)** (i) Describe the external and internal structure of the mammalian heart; (ii) dissect, examine and draw a heart — was partly covered; now in *Spec completion — 3.1.2 Transport in animals*
+- **3.1.2(h)** Interpret ECG traces, including tachycardia, bradycardia, fibrillation and ectopic heartbeat — was partly covered; now in *Spec completion — 3.1.2 Transport in animals* · corrected by checker
+- **3.1.3(a)** Explain why multicellular plants need transport systems: size, metabolic rate and SA:V ratio — was partly covered; now in *Spec completion — 3.1.3 Transport in plants*
+- **3.1.3(b)** (i) Xylem/phloem structure in dicot roots, stems, leaves; (ii) draw stained sections; (iii) dissect stems — was partly covered; now in *Spec completion — 3.1.3 Transport in plants*
+- **3.1.3(e)** Describe adaptations of xerophytes (cacti, marram grass) and hydrophytes (water lilies) to water availability — was partly covered; now in *Spec completion — 3.1.3 Transport in plants*
+- **4.1.1(a)** Name pathogen types (bacteria, viruses, protoctista, fungi) causing communicable diseases in plants and animals — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(b)** Explain direct and indirect transmission of plant and animal pathogens, including vectors and social factors — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(c)** Describe plant defences against pathogens, e.g. chemical production and callose deposition — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(d)** Describe primary non-specific defences: skin, clotting, wound repair, inflammation, expulsive reflexes, mucus — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(e)** (i) Explain phagocyte action (neutrophils, APCs, opsonins, lysosomes, cytokines); (ii) draw cells in blood smears — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(f)** Explain the roles of B and T lymphocytes in specific immunity: clonal selection/expansion, plasma and T cells — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(h)** Describe the structure and general functions of antibodies — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(j)** Distinguish active vs passive and natural vs artificial immunity — was missing; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(k)** Explain autoimmune diseases with examples (e.g. arthritis, lupus) — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(m)** Describe possible sources of medicines: microorganisms, plants, personalised medicine, synthetic biology — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.1.1(n)** Evaluate benefits and risks of antibiotics, including resistance (e.g. MRSA, C. difficile) — was partly covered; now in *Spec completion — 4.1.1 Communicable diseases, disease prevention and the immune system*
+- **4.2.1(b)** (i) Explain how sampling measures habitat biodiversity; (ii) use random/non-random sampling methods in the field — was partly covered; now in *Spec completion — 4.2.1 Biodiversity*
+- **4.2.1(e)** Assess genetic biodiversity, including calculating the proportion of polymorphic gene loci — was partly covered; now in *Spec completion — 4.2.1 Biodiversity*
+- **4.2.1(f)** Explain factors affecting biodiversity: human population growth, monoculture, climate change — was partly covered; now in *Spec completion — 4.2.1 Biodiversity*
+- **4.2.1(g)** Explain ecological, economic and aesthetic reasons for maintaining biodiversity — was partly covered; now in *Spec completion — 4.2.1 Biodiversity*
+- **4.2.1(i)** Describe international and local conservation agreements (e.g. CITES, CBD, Countryside Stewardship Scheme) — was missing; now in *Spec completion — 4.2.1 Biodiversity*
+- **4.2.2(b)** Explain the binomial naming system and its advantages — was missing; now in *Spec completion — 4.2.2 Classification and evolution*
+- **4.2.2(c)** (i) Describe features used to classify into five kingdoms; (ii) evidence for the three-domain system — was partly covered; now in *Spec completion — 4.2.2 Classification and evolution*
+- **4.2.2(e)** Describe evidence for evolution by natural selection: Darwin and Wallace, fossil, DNA and molecular evidence — was partly covered; now in *Spec completion — 4.2.2 Classification and evolution*
+- **4.2.2(f)** Distinguish types of variation: intra/interspecific, continuous/discontinuous, genetic/environmental — was partly covered; now in *Spec completion — 4.2.2 Classification and evolution*
+- **4.2.2(g)** Describe anatomical, physiological and behavioural adaptations, including convergent evolution examples — was partly covered; now in *Spec completion — 4.2.2 Classification and evolution*
+- **5.1.1(a)** Explain why multicellular organisms need communication systems to respond to change and coordinate organs — was partly covered; now in *Spec completion — 5.1.1 Communication and homeostasis*
+- **5.1.1(d)** Compare temperature control in ectotherms and endotherms (physiological and behavioural; hypothalamus role) — was partly covered; now in *Spec completion — 5.1.1 Communication and homeostasis*
+- **5.1.2(b)** (i) Liver structure and functions: storage, detoxification, ornithine cycle; (ii) examine and draw liver sections — was partly covered; now in *Spec completion — 5.1.2 Excretion as an example of homeostatic control*
+- **5.1.2(c)** (i) Kidney and nephron: ultrafiltration, selective reabsorption; (ii) dissect a kidney; (iii) draw nephron sections — was partly covered; now in *Spec completion — 5.1.2 Excretion as an example of homeostatic control*
+- **5.1.2(e)** Explain kidney failure effects (GFR, electrolytes) and treatments: haemodialysis, peritoneal dialysis, transplant — was partly covered; now in *Spec completion — 5.1.2 Excretion as an example of homeostatic control* · corrected by checker
+- **5.1.2(f)** Explain how excretory products are used in diagnosis, e.g. monoclonal antibodies in pregnancy and drug tests — was partly covered; now in *Spec completion — 5.1.2 Excretion as an example of homeostatic control*
+- **5.1.3(a)** Explain how mammalian sensory receptors (e.g. Pacinian corpuscle) act as transducers — was missing; now in *Spec completion — 5.1.3 Neuronal communication*
+- **5.1.3(b)** Describe the structure and functions of sensory, relay and motor neurones, myelinated vs non-myelinated — was partly covered; now in *Spec completion — 5.1.3 Neuronal communication*
+- **5.1.4(b)** Describe the structure and functions of the adrenal glands (cortex and medulla hormones) — was partly covered; now in *Spec completion — 5.1.4 Hormonal communication*
+- **5.1.4(c)** (i) Describe the histology of the pancreas; (ii) examine and draw stained pancreas sections (endocrine tissue) — was partly covered; now in *Spec completion — 5.1.4 Hormonal communication*
+- **5.1.4(f)** Evaluate potential diabetes treatments: insulin from GM bacteria and stem cell therapy — was partly covered; now in *Spec completion — 5.1.4 Hormonal communication*
+- **5.1.5(a)** (i) Plant responses to abiotic stress, herbivory and tropisms; (ii) investigate phototropism and geotropism — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses* · corrected by checker
+- **5.1.5(c)** Interpret experimental evidence for the role of auxins in apical dominance — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.1.5(d)** Interpret experimental evidence for gibberellin in stem elongation and seed germination — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.1.5(e)** Carry out practical investigations into the effect of plant hormones on growth — was missing; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.1.5(i)** Explain reflex actions (e.g. knee jerk, blinking) and their survival value — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.1.5(j)** Explain fight or flight coordination: adrenaline as first messenger, adenylyl cyclase, cAMP second messenger — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.1.5(k)** Explain how hormones and nervous mechanisms control heart rate — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.1.5(l)** (i) Muscle types, NMJ, sliding filament model, ATP and creatine phosphate; (ii) examine skeletal muscle sections — was partly covered; now in *Spec completion — 5.1.5 Plant and animal responses*
+- **5.2.1(c)** (i) Explain the importance of photosynthetic pigments and photosystems; (ii) separate pigments by TLC — was partly covered; now in *Spec completion — 5.2.1 Photosynthesis*
+- **5.2.1(f)** Describe uses of TP: making carbohydrates, lipids and amino acids, and regenerating RuBP — was partly covered; now in *Spec completion — 5.2.1 Photosynthesis*
+- **5.2.1(g)** (i) Explain limiting factors, water stress and effects on GP/RuBP/TP; (ii) investigate photosynthesis rate — was partly covered; now in *Spec completion — 5.2.1 Photosynthesis*
+- **5.2.2(a)** Explain why organisms need cellular respiration, e.g. for active transport and metabolic reactions — was partly covered; now in *Spec completion — 5.2.2 Respiration*
+- **5.2.2(j)** Compare the relative energy values of carbohydrates, lipids and proteins as respiratory substrates — was partly covered; now in *Spec completion — 5.2.2 Respiration*
+- **5.2.2(l)** Investigate effects of temperature, substrate concentration and substrate type on respiration rate — was partly covered; now in *Spec completion — 5.2.2 Respiration*
+- **6.1.1(d)** Explain how mitosis and apoptosis control body form and respond to internal and external stimuli — was partly covered; now in *Spec completion — 6.1.1 Cellular control*
+- **6.1.2(d)** Explain the genetic basis of continuous and discontinuous variation (number of genes involved) — was partly covered; now in *Spec completion — 6.1.2 Patterns of inheritance*
+- **6.1.2(h)** (i) Principles and importance of artificial selection; (ii) its ethical considerations — was missing; now in *Spec completion — 6.1.2 Patterns of inheritance*
+- **6.1.3(b)** Explain how gene sequencing enables genome-wide comparisons, amino acid sequence prediction and synthetic biology — was partly covered; now in *Spec completion — 6.1.3 Manipulating genomes*
+- **6.1.3(f)** Explain genetic engineering techniques: restriction enzymes, plasmid vectors, DNA ligase, electroporation — was partly covered; now in *Spec completion — 6.1.3 Manipulating genomes*
+- **6.1.3(g)** Discuss ethical issues of genetically manipulating microorganisms, plants and animals (e.g. GM soya, pharming) — was partly covered; now in *Spec completion — 6.1.3 Manipulating genomes*
+- **6.2.1(a)** (i) Natural clones in plants and their use in horticulture; (ii) take plant cuttings to produce clones — was partly covered; now in *Spec completion — 6.2.1 Cloning and biotechnology*
+- **6.2.1(b)** (i) Produce artificial plant clones by micropropagation/tissue culture; (ii) arguments for and against — was partly covered; now in *Spec completion — 6.2.1 Cloning and biotechnology*
+- **6.2.1(c)** Describe natural clones in animals, e.g. identical twins from embryo splitting — was missing; now in *Spec completion — 6.2.1 Cloning and biotechnology*
+- **6.2.1(d)** (i) Artificial animal cloning by embryo twinning and SCNT; (ii) arguments for and against — was partly covered; now in *Spec completion — 6.2.1 Cloning and biotechnology*
+- **6.2.1(e)** Explain uses of microorganisms in biotechnology: brewing, baking, cheese, penicillin, insulin, bioremediation — was partly covered; now in *Spec completion — 6.2.1 Cloning and biotechnology*
+- **6.2.1(h)** (i) Describe the standard growth curve in a closed culture; (ii) investigate factors affecting microbial growth — was partly covered; now in *Spec completion — 6.2.1 Cloning and biotechnology*
+- **6.3.1(b)** Explain biomass transfer between trophic levels, its efficiency and how humans can manipulate it — was partly covered; now in *Spec completion — 6.3.1 Ecosystems*
+- **6.3.1(c)** Explain recycling: decomposers, nitrogen cycle bacteria (e.g. Rhizobium, Nitrosomonas) and the carbon cycle — was partly covered; now in *Spec completion — 6.3.1 Ecosystems*
+- **6.3.1(d)** Describe primary succession from pioneer species to climax community, including deflected succession — was partly covered; now in *Spec completion — 6.3.1 Ecosystems* · corrected by checker
+- **6.3.2(b)** Explain interactions between populations: predator-prey relationships, inter- and intraspecific competition — was partly covered; now in *Spec completion — 6.3.2 Populations and sustainability*
+- **6.3.2(c)** Distinguish conservation from preservation and give economic, social and ethical reasons for conservation — was partly covered; now in *Spec completion — 6.3.2 Populations and sustainability*
+- **6.3.2(e)** Explain how human needs are balanced with conservation and how human impact is controlled in sensitive areas — was partly covered; now in *Spec completion — 6.3.2 Populations and sustainability* · corrected by checker
+
+### OCR A Level Chemistry A (H432)
+
+- **1.2.1(g)** Use suitable software/tools to process data, carry out research and report findings — was missing; now in *Spec completion — 1.2.1 Practical skills*
+- **1.2.1(h)** Use online and offline research skills (websites, textbooks, printed scientific sources) — was missing; now in *Spec completion — 1.2.1 Practical skills*
+- **1.2.1(i)** Cite sources of information correctly — was missing; now in *Spec completion — 1.2.1 Practical skills*
+- **1.2.2(b)** Heat using a water bath, electric heater or sand bath — was missing; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **1.2.2(c)** Measure pH with pH charts, a pH meter or a pH probe on a data logger — was partly covered; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **1.2.2(e)** Make up a standard solution accurately with a volumetric flask — was missing; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **1.2.2(h)** Use melting point apparatus (e.g. to check the purity of a solid) — was partly covered; now in *Spec completion — 1.2.2 Use of apparatus and techniques* · corrected by checker
+- **1.2.2(i)** Carry out thin layer or paper chromatography — was partly covered; now in *Spec completion — 1.2.2 Use of apparatus and techniques*
+- **2.1.1(b)** Work out protons, neutrons and electrons in atoms and ions from atomic number, mass number and charge — was partly covered; now in *Spec completion — 2.1.1 Atomic structure and isotopes*
+- **2.1.1(e)** Relative molecular mass (Mr) and relative formula mass, worked out from Ar values — was partly covered; now in *Spec completion — 2.1.1 Atomic structure and isotopes*
+- **2.1.2(a)** Write ionic formulae: (i) ion charge from periodic table position; (ii) recall NO3⁻, CO3²⁻, SO4²⁻, OH⁻, NH4⁺, Zn²⁺, Ag⁺ — was partly covered; now in *Spec completion — 2.1.2 Compounds, formulae and equations* · corrected by checker
+- **2.1.2(b)** Write balanced full and ionic equations with state symbols, including for unfamiliar reactions — was partly covered; now in *Spec completion — 2.1.2 Compounds, formulae and equations*
+- **2.1.3(d)** Anhydrous, hydrated, water of crystallisation; calculate the formula of a hydrated salt — was missing; now in *Spec completion — 2.1.3 Amount of substance*
+- **2.1.3(f)** Use the ideal gas equation pV = nRT — was partly covered; now in *Spec completion — 2.1.3 Amount of substance*
+- **2.1.3(j)** Sustainability benefits of processes with high atom economy — was partly covered; now in *Spec completion — 2.1.3 Amount of substance*
+- **2.1.4(a)** Formulae of common acids and alkalis; acids release H⁺ and alkalis release OH⁻ in water — was partly covered; now in *Spec completion — 2.1.4 Acids*
+- **2.1.4(c)** Neutralisation: (i) H⁺ + OH⁻ → H2O; (ii) acids reacting with bases to form salts — was partly covered; now in *Spec completion — 2.1.4 Acids*
+- **2.1.4(d)** Practical techniques for making standard solutions and doing acid–base titrations — was partly covered; now in *Spec completion — 2.1.4 Acids*
+- **2.1.5(e)** Redox reactions of metals with acids forming salts; write full equations — was partly covered; now in *Spec completion — 2.1.5 Redox*
+- **2.2.2(a)** Ionic bonding as electrostatic attraction between ions; dot-and-cross diagrams — was partly covered; now in *Spec completion — 2.2.2 Bonding and structure* · corrected by checker
+- **2.2.2(c)** How ionic lattices affect melting/boiling points, solubility and electrical conductivity — was partly covered; now in *Spec completion — 2.2.2 Bonding and structure*
+- **2.2.2(e)** Dot-and-cross diagrams for (i) single, (ii) multiple and (iii) dative (coordinate) covalent bonds — was partly covered; now in *Spec completion — 2.2.2 Bonding and structure*
+- **2.2.2(o)** How simple molecular structure affects melting/boiling points, solubility and conductivity — was partly covered; now in *Spec completion — 2.2.2 Bonding and structure*
+- **3.1.1(b)** (i) Electron configuration trends across Periods 2 and 3; (ii) s-, p- and d-block classification — was partly covered; now in *Spec completion — 3.1.1 Periodicity* · corrected by checker
+- **3.1.1(e)** Giant covalent lattices of C (diamond, graphite, graphene) and Si — was partly covered; now in *Spec completion — 3.1.1 Periodicity*
+- **3.1.1(f)** Explain melting/boiling points, solubility and conductivity of giant metallic and covalent lattices — was partly covered; now in *Spec completion — 3.1.1 Periodicity*
+- **3.1.1(g)** Melting point trend across Periods 2 and 3 linked to structure and bonding (giant to simple) — was partly covered; now in *Spec completion — 3.1.1 Periodicity* · corrected by checker
+- **3.1.2(b)** Reactivity of Mg→Ba with O2, water and dilute acids (redox) — was partly covered; now in *Spec completion — 3.1.2 Group 2* · corrected by checker
+- **3.1.2(d)** Group 2 oxides with water: approximate pH of the hydroxide solutions; alkalinity rises down group — was partly covered; now in *Spec completion — 3.1.2 Group 2* · corrected by checker
+- **3.1.3(c)** Halogen reactivity trend shown by displacement reactions with halide ions, including colours — was partly covered; now in *Spec completion — 3.1.3 The halogens* · corrected by checker
+- **3.1.3(g)** Halide test: Cl⁻, Br⁻, I⁻ with aqueous Ag⁺ then aqueous NH3; ionic equations — was partly covered; now in *Spec completion — 3.1.3 The halogens*
+- **3.2.1(b)** Draw enthalpy profile diagrams showing ΔH between reactants and products — was partly covered; now in *Spec completion — 3.2.1 Enthalpy changes*
+- **3.2.1(h)** Practical techniques for finding enthalpy changes directly and indirectly — was partly covered; now in *Spec completion — 3.2.1 Enthalpy changes* · corrected by checker
+- **3.2.3(d)** Practical techniques to investigate equilibrium shifts with concentration and temperature — was missing; now in *Spec completion — 3.2.3 Chemical equilibrium*
+- **4.1.1(a)** Name organic compounds systematically using IUPAC rules (for the functional groups in the spec) — was partly covered; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry*
+- **4.1.1(b)** Interpret and use (i) general, (ii) structural, (iii) displayed and (iv) skeletal formulae — was missing; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry*
+- **4.1.1(c)** Terms: homologous series, functional group, alkyl group (CnH2n+1), aliphatic, alicyclic, aromatic, (un)saturated — was partly covered; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry*
+- **4.1.1(d)** Use a homologous series' general formula to predict any member's formula — was partly covered; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry*
+- **4.1.1(e)** Structural isomers; deduce possible structural formulae from a molecular formula — was missing; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry*
+- **4.1.1(f)** Bond fission: (i) homolytic, giving two radicals; (ii) heterolytic, both electrons to one atom — was partly covered; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry* · corrected by checker
+- **4.1.1(g)** Radical: species with an unpaired electron, shown with a dot (•) in mechanisms — was partly covered; now in *Spec completion — 4.1.1 Basic concepts of organic chemistry*
+- **4.1.2(a)** Alkanes are saturated hydrocarbons with σ-bonds (direct orbital overlap); free rotation about C–C — was partly covered; now in *Spec completion — 4.1.2 Alkanes*
+- **4.1.2(c)** Alkane boiling points vs chain length and branching, explained by London forces — was partly covered; now in *Spec completion — 4.1.2 Alkanes*
+- **4.1.2(d)** Low alkane reactivity: high bond enthalpy and very low polarity of σ-bonds — was missing; now in *Spec completion — 4.1.2 Alkanes*
+- **4.1.2(e)** Complete combustion of alkanes; incomplete combustion in limited O2 and toxicity of CO — was partly covered; now in *Spec completion — 4.1.2 Alkanes*
+- **4.1.2(f)** Radical substitution of alkanes with Cl2/Br2 under UV: initiation, propagation, termination — was partly covered; now in *Spec completion — 4.1.2 Alkanes*
+- **4.1.2(g)** Limits of radical substitution in synthesis: further substitution and mixtures of products — was partly covered; now in *Spec completion — 4.1.2 Alkanes*
+- **4.1.3(b)** Trigonal planar shape and bond angle around each C=C carbon from electron pair repulsion — was partly covered; now in *Spec completion — 4.1.3 Alkenes*
+- **4.1.3(c)** (i) Stereoisomerism: E/Z and cis–trans; (ii) assign E/Z using CIP priority rules — was partly covered; now in *Spec completion — 4.1.3 Alkenes* · corrected by checker
+- **4.1.3(e)** Alkene reactivity from the relatively low bond enthalpy of the π-bond — was partly covered; now in *Spec completion — 4.1.3 Alkenes*
+- **4.1.3(g)** Electrophile: an electron pair acceptor — was partly covered; now in *Spec completion — 4.1.3 Alkenes*
+- **4.2.3(a)** Quickfit techniques: (i) distillation and heating under reflux; (ii) purifying organic liquids — was partly covered; now in *Spec completion — 4.2.3 Organic synthesis*
+- **4.2.3(b)** In multifunctional molecules: (i) identify functional groups; (ii) predict properties and reactions — was partly covered; now in *Spec completion — 4.2.3 Organic synthesis* · corrected by checker
+- **4.2.4(e)** Uses of IR: monitoring pollutant gases (CO, NO) and breathalysers measuring ethanol — was partly covered; now in *Spec completion — 4.2.4 Analytical techniques* · corrected by checker
+- **5.1.1(d)** Concentration–time graphs: (i) zero vs first order from shape; (ii) rates from gradients — was partly covered; now in *Spec completion — 5.1.1 How fast?*
+- **5.1.1(g)** Rate–concentration graphs: (i) order 0, 1 or 2 from shape; (ii) k from gradient for first order — was partly covered; now in *Spec completion — 5.1.1 How fast?*
+- **5.1.1(i)** Multi-step reactions: (i) rate equation consistent with RDS; (ii) propose mechanism steps — was partly covered; now in *Spec completion — 5.1.1 How fast?*
+- **5.1.2(c)** Practical techniques to find quantities present at equilibrium — was missing; now in *Spec completion — 5.1.2 How far?* · corrected by checker
+- **5.1.2(g)** Explain how K controls equilibrium position when conditions change — was partly covered; now in *Spec completion — 5.1.2 How far?*
+- **5.1.3(a)** (i) Brønsted–Lowry acids and bases; (ii) conjugate acid–base pairs; (iii) mono-, di- and tribasic acids — was partly covered; now in *Spec completion — 5.1.3 Acids, bases and buffers*
+- **5.1.3(b)** Role of H⁺ in reactions of acids with metals and bases, using ionic equations — was partly covered; now in *Spec completion — 5.1.3 Acids, bases and buffers*
+- **5.1.3(j)** Making buffers from (i) weak acid + its salt; (ii) excess weak acid + strong alkali — was partly covered; now in *Spec completion — 5.1.3 Acids, bases and buffers*
+- **5.1.3(m)** Blood pH controlled by the carbonic acid–hydrogencarbonate buffer — was partly covered; now in *Spec completion — 5.1.3 Acids, bases and buffers*
+- **5.1.3(n)** pH titration curves: (i) sketch/interpret; (ii) choose indicators; (iii) indicator colour change via HA ⇌ H⁺ + A⁻ — was partly covered; now in *Spec completion — 5.1.3 Acids, bases and buffers*
+- **5.1.3(o)** Practical techniques for measuring pH with a pH meter — was partly covered; now in *Spec completion — 5.1.3 Acids, bases and buffers*
+- **5.2.3(d)** Redox titration techniques: Fe²⁺/MnO4⁻ and I2/S2O3²⁻ — was partly covered; now in *Spec completion — 5.2.3 Redox and electrode potentials*
+- **5.2.3(e)** Redox titration calculations: (i) Fe²⁺/MnO4⁻ and I2/S2O3²⁻; (ii) unfamiliar redox systems — was partly covered; now in *Spec completion — 5.2.3 Redox and electrode potentials*
+- **5.2.3(g)** Measure cell potentials for (i) metal/metal ion half-cells; (ii) ions of the same element at Pt — was partly covered; now in *Spec completion — 5.2.3 Redox and electrode potentials*
+- **5.2.3(j)** Apply electrode potential ideas to modern storage cells — was partly covered; now in *Spec completion — 5.2.3 Redox and electrode potentials*
+- **5.2.3(k)** Fuel cells: generate a voltage from fuel + oxygen reaction; changes at each electrode — was partly covered; now in *Spec completion — 5.2.3 Redox and electrode potentials*
+- **5.3.1(f)** Stereoisomerism in complexes: (i) cis–trans, e.g. Pt(NH3)2Cl2; (ii) optical, e.g. [Ni(en)3]²⁺ — was partly covered; now in *Spec completion — 5.3.1 Transition elements*
+- **5.3.1(h)** Ligand substitution and colours: (i) [Cu(H2O)6]²⁺ with NH3 and Cl⁻; (ii) [Cr(H2O)6]³⁺ with NH3 — was partly covered; now in *Spec completion — 5.3.1 Transition elements*
+- **5.3.1(i)** Iron in haemoglobin: ligand substitution involving O2 and CO — was partly covered; now in *Spec completion — 5.3.1 Transition elements*
+- **5.3.1(k)** Redox and colours: (i) Fe²⁺/Fe³⁺; (ii) Cr³⁺/Cr2O7²⁻; (iii) Cu²⁺ to Cu⁺ and Cu⁺ disproportionation — was partly covered; now in *Spec completion — 5.3.1 Transition elements* · corrected by checker
+- **6.1.1(c)** Name substituted aromatic compounds systematically by IUPAC rules, using locant numbers — was partly covered; now in *Spec completion — 6.1.1 Aromatic compounds*
+- **6.1.1(e)** Mechanisms of nitration (with NO2⁺ formation) and halogenation of arenes — was partly covered; now in *Spec completion — 6.1.1 Aromatic compounds*
+- **6.1.1(f)** Why benzene resists bromination compared with alkenes: delocalised vs localised π-electrons — was partly covered; now in *Spec completion — 6.1.1 Aromatic compounds*
+- **6.1.1(h)** Phenol's weak acidity: reacts with NaOH but not with carbonates — was partly covered; now in *Spec completion — 6.1.1 Aromatic compounds*
+- **6.1.1(i)** Phenol substitution: (i) Br2 → 2,4,6-tribromophenol; (ii) dilute HNO3 → 2-nitrophenol — was partly covered; now in *Spec completion — 6.1.1 Aromatic compounds*
+- **6.1.1(l)** Predict aromatic substitution products from directing effects; importance in synthesis — was partly covered; now in *Spec completion — 6.1.1 Aromatic compounds* · corrected by checker
+- **6.1.3(a)** Water solubility of carboxylic acids explained by hydrogen bonding — was partly covered; now in *Spec completion — 6.1.3 Carboxylic acids and esters*
+- **6.1.3(e)** Make acyl chlorides from carboxylic acids using SOCl2 — was missing; now in *Spec completion — 6.1.3 Carboxylic acids and esters*
+- **6.1.3(f)** Acyl chlorides in synthesis: making esters (incl. from phenol), carboxylic acids, 1° and 2° amides — was partly covered; now in *Spec completion — 6.1.3 Carboxylic acids and esters*
+- **6.2.3(b)** Acid and base hydrolysis of (i) ester groups in polyesters; (ii) amide groups in polyamides — was partly covered; now in *Spec completion — 6.2.3 Polyesters and polyamides*
+- **6.2.4(c)** Nitrile reactions: (i) reduction (e.g. H2/Ni) to amines; (ii) acid hydrolysis to carboxylic acids — was partly covered; now in *Spec completion — 6.2.4 Carbon–carbon bond formation*
+- **6.3.1(b)** Interpret gas chromatograms: (i) retention times; (ii) amounts/proportions of components (calibration curves) — was missing; now in *Spec completion — 6.3.1 Chromatography and qualitative analysis*
+- **6.3.1(c)** Test-tube tests for alkenes, haloalkanes, phenols, carbonyls, aldehydes, 1°/2° alcohols, carboxylic acids (i)–(vii) — was partly covered; now in *Spec completion — 6.3.1 Chromatography and qualitative analysis*
+- **6.3.2(a)** Carbon-13 NMR: predict (i) number of C environments; (ii) environment types from shifts; (iii) structures — was partly covered; now in *Spec completion — 6.3.2 Spectroscopy* · corrected by checker
+- **6.3.2(c)** Predict a carbon-13 or proton NMR spectrum for a given molecule — was partly covered; now in *Spec completion — 6.3.2 Spectroscopy*
+- **6.3.2(d)** (i) TMS as chemical shift standard; (ii) deuterated solvents, e.g. CDCl3; (iii) O–H/N–H proton exchange with D2O — was partly covered; now in *Spec completion — 6.3.2 Spectroscopy*
+
+### Pearson Edexcel A Level Mathematics (9MA0)
+
+- **P 1.1** Structure proofs: deduction, exhaustion, counter-example and contradiction (e.g. √2 irrational) — was partly covered; now in *Spec completion — Pure: Topic 1 – Proof*
+- **P 2.1** Apply laws of indices to rational exponents; link a^(m/n) to nth roots — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions* · corrected by checker
+- **P 2.4** Solve simultaneous equations by elimination and substitution, incl. one linear and one quadratic — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions*
+- **P 2.5** Solve linear and quadratic inequalities; show on graphs and with set notation — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions*
+- **P 2.6** Expand, factorise and divide polynomials; factor theorem; simplify rational expressions — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions*
+- **P 2.7** Sketch cubics, quartics, |linear|, y=a/x, y=a^x with asymptotes; use graphs; proportion — was missing; now in *Spec completion — Pure: Topic 2 – Algebra and functions*
+- **P 2.8** Composite and inverse functions; domain and range; one-one vs many-one mappings — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions* · corrected by checker
+- **P 2.9** Transform y=f(x): af(x), f(x)+a, f(x+a), f(ax), f(−x) and combinations — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions*
+- **P 2.10** Split rational functions into partial fractions (linear and repeated linear denominators) — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions*
+- **P 2.11** Model with functions (trig, exponential, reciprocal); consider limitations and refinements — was partly covered; now in *Spec completion — Pure: Topic 2 – Algebra and functions* · corrected by checker
+- **P 3.1** Straight lines: y−y₁=m(x−x₁), ax+by+c=0; parallel and perpendicular gradients; line models — was partly covered; now in *Spec completion — Pure: Topic 3 – Coordinate geometry in the (x, y) plane* · corrected by checker
+- **P 3.3** Parametric equations of curves; convert between parametric and Cartesian forms — was partly covered; now in *Spec completion — Pure: Topic 3 – Coordinate geometry in the (x, y) plane*
+- **P 3.4** Use parametric equations in modelling contexts, e.g. motion at constant velocity — was missing; now in *Spec completion — Pure: Topic 3 – Coordinate geometry in the (x, y) plane*
+- **P 4.2** Sequences by nth term or recurrence x_(n+1)=f(x_n); increasing, decreasing, periodic — was missing; now in *Spec completion — Pure: Topic 4 – Sequences and series*
+- **P 4.3** Use sigma notation for sums of series — was partly covered; now in *Spec completion — Pure: Topic 4 – Sequences and series* · corrected by checker
+- **P 4.4** Arithmetic sequences and series: nth term, sum to n terms and proof of the sum formula — was partly covered; now in *Spec completion — Pure: Topic 4 – Sequences and series* · corrected by checker
+- **P 4.5** Geometric sequences and series: nth term, sum and its proof, sum to infinity when |r|<1 — was partly covered; now in *Spec completion — Pure: Topic 4 – Sequences and series* · corrected by checker
+- **P 4.6** Use arithmetic and geometric sequences and series in modelling, e.g. savings schemes — was partly covered; now in *Spec completion — Pure: Topic 4 – Sequences and series*
+- **P 5.1** sin, cos, tan for all angles; sine/cosine rules, ½ab sin C; radians, arc length, sector area — was partly covered; now in *Spec completion — Pure: Topic 5 – Trigonometry* · corrected by checker
+- **P 5.3** Graphs, symmetry and period of sin, cos, tan; exact values at standard angles — was partly covered; now in *Spec completion — Pure: Topic 5 – Trigonometry*
+- **P 5.4** sec, cosec, cot and arcsin, arccos, arctan: definitions, graphs, domains and ranges — was missing; now in *Spec completion — Pure: Topic 5 – Trigonometry*
+- **P 5.5** Use tan θ=sin θ/cos θ, sin²θ+cos²θ=1, sec²θ=1+tan²θ, cosec²θ=1+cot²θ — was partly covered; now in *Spec completion — Pure: Topic 5 – Trigonometry* · corrected by checker
+- **P 5.6** Compound and double angle formulae; write a cos θ+b sin θ as R cos(θ±α) or R sin(θ±α) — was partly covered; now in *Spec completion — Pure: Topic 5 – Trigonometry* · corrected by checker
+- **P 5.8** Construct proofs involving trigonometric functions and identities — was partly covered; now in *Spec completion — Pure: Topic 5 – Trigonometry*
+- **P 5.9** Apply trig functions to contextual problems, e.g. waves, forces, vectors, kinematics — was partly covered; now in *Spec completion — Pure: Topic 5 – Trigonometry*
+- **P 6.1** Graphs of y=a^x and y=e^x, incl. transformed forms such as y=e^(ax+b)+c — was missing; now in *Spec completion — Pure: Topic 6 – Exponentials and logarithms*
+- **P 6.2** Gradient of e^(kx) is ke^(kx); exponential models where rate of change ∝ value — was partly covered; now in *Spec completion — Pure: Topic 6 – Exponentials and logarithms* · corrected by checker
+- **P 6.3** log_a x as inverse of a^x, ln x as inverse of e^x; solve e^(ax+b)=p and ln(ax+b)=q — was partly covered; now in *Spec completion — Pure: Topic 6 – Exponentials and logarithms* · corrected by checker
+- **P 6.4** Apply the laws of logarithms, including k log_a x = log_a x^k and log_a a = 1 — was partly covered; now in *Spec completion — Pure: Topic 6 – Exponentials and logarithms* · corrected by checker
+- **P 6.6** Use log graphs to estimate constants in y=ax^n and y=kb^x from data — was missing; now in *Spec completion — Pure: Topic 6 – Exponentials and logarithms*
+- **P 6.7** Exponential growth and decay models: find constants, interpret, discuss limitations — was partly covered; now in *Spec completion — Pure: Topic 6 – Exponentials and logarithms*
+- **P 7.1** Derivative as gradient, limit and rate of change; f''(x), concavity, inflection; first principles — was partly covered; now in *Spec completion — Pure: Topic 7 – Differentiation* · corrected by checker
+- **P 7.2** Differentiate x^n, e^(kx), a^(kx), sin kx, cos kx, tan kx, ln x and sums/multiples — was partly covered; now in *Spec completion — Pure: Topic 7 – Differentiation* · corrected by checker
+- **P 7.3** Use derivatives for tangents, normals, stationary points, inflections, increasing/decreasing — was partly covered; now in *Spec completion — Pure: Topic 7 – Differentiation*
+- **P 7.4** Product, quotient and chain rules; inverse functions; connected rates of change; sec, cosec, cot — was partly covered; now in *Spec completion — Pure: Topic 7 – Differentiation* · corrected by checker
+- **P 7.6** Form simple differential equations from information, in pure maths and in context — was missing; now in *Spec completion — Pure: Topic 7 – Differentiation*
+- **P 8.2** Integrate x^n (n≠−1), e^(kx), 1/x, sin kx, cos kx; use identities; find curve from f'(x) — was partly covered; now in *Spec completion — Pure: Topic 8 – Integration* · corrected by checker
+- **P 8.3** Evaluate definite integrals; areas under and between curves, incl. parametric curves — was partly covered; now in *Spec completion — Pure: Topic 8 – Integration*
+- **P 8.4** Understand the definite integral as the limit of a sum of f(x)δx — was missing; now in *Spec completion — Pure: Topic 8 – Integration*
+- **P 8.5** Integrate by substitution and by parts; ∫f'(x)/f(x)dx = ln|f(x)|+c; integrate ln x — was partly covered; now in *Spec completion — Pure: Topic 8 – Integration* · corrected by checker
+- **P 8.6** Integrate rational functions using partial fractions with linear denominators — was partly covered; now in *Spec completion — Pure: Topic 8 – Integration*
+- **P 8.8** Interpret differential equation solutions in context, incl. limitations and large values — was partly covered; now in *Spec completion — Pure: Topic 8 – Integration*
+- **P 9.2** Solve equations with iteration x_(n+1)=f(x_n); cobweb and staircase diagrams — was partly covered; now in *Spec completion — Pure: Topic 9 – Numerical methods*
+- **P 9.4** Trapezium rule for areas; decide whether it over- or under-estimates — was missing; now in *Spec completion — Pure: Topic 9 – Numerical methods* · corrected by checker
+- **P 9.5** Apply numerical methods to solve problems in context — was partly covered; now in *Spec completion — Pure: Topic 9 – Numerical methods* · corrected by checker
+- **P 10.1** Use 2D and 3D vectors in column form and with i, j, k unit vectors — was partly covered; now in *Spec completion — Pure: Topic 10 – Vectors*
+- **P 10.3** Add vectors (triangle and parallelogram laws), multiply by scalars; parallel vectors — was partly covered; now in *Spec completion — Pure: Topic 10 – Vectors*
+- **S 2.1** Interpret histograms (area = frequency), frequency polygons, box plots, cumulative frequency — was partly covered; now in *Spec completion — Statistics: Topic 2 – Data presentation and interpretation*
+- **S 2.2** Scatter diagrams, regression lines, interpolation vs extrapolation; correlation ≠ causation — was partly covered; now in *Spec completion — Statistics: Topic 2 – Data presentation and interpretation*
+- **S 2.3** Measures of location and spread: mean, median, mode, variance, s.d. (via Sxx), coding — was partly covered; now in *Spec completion — Statistics: Topic 2 – Data presentation and interpretation* · corrected by checker
+- **S 2.4** Identify outliers by a given rule; select/critique presentations; clean data — was partly covered; now in *Spec completion — Statistics: Topic 2 – Data presentation and interpretation* · corrected by checker
+- **S 3.1** Mutually exclusive and independent events using Venn diagrams, tree diagrams, set notation — was partly covered; now in *Spec completion — Statistics: Topic 3 – Probability* · corrected by checker
+- **S 3.3** Model with probability; critique assumptions such as a fair coin or die — was partly covered; now in *Spec completion — Statistics: Topic 3 – Probability*
+- **S 4.1** Discrete distributions incl. binomial B(n,p) and discrete uniform; calculator probabilities — was partly covered; now in *Spec completion — Statistics: Topic 4 – Statistical distributions*
+- **S 4.2** Normal distribution N(μ,σ²): shape, inflection at μ±σ; approximate binomial with correction — was partly covered; now in *Spec completion — Statistics: Topic 4 – Statistical distributions* · corrected by checker
+- **S 4.3** Choose an appropriate distribution for a context and recognise when a model is unsuitable — was partly covered; now in *Spec completion — Statistics: Topic 4 – Statistical distributions*
+- **S 5.1** Hypothesis testing language: H₀, H₁, significance, critical region, p-value; test for ρ=0 — was partly covered; now in *Spec completion — Statistics: Topic 5 – Statistical hypothesis testing* · corrected by checker
+- **S 5.3** Hypothesis test for the mean of a Normal distribution with known variance, using X̄ — was missing; now in *Spec completion — Statistics: Topic 5 – Statistical hypothesis testing* · corrected by checker
+- **M 6.1** SI base units (length, time, mass) and derived units (velocity, force, moment); convert units — was partly covered; now in *Spec completion — Mechanics: Topic 6 – Quantities and units in mechanics*
+- **M 7.1** Kinematics vocabulary: position, displacement, distance, velocity, speed, acceleration — was partly covered; now in *Spec completion — Mechanics: Topic 7 – Kinematics*
+- **M 7.3** Derive and use suvat constant-acceleration formulae, incl. 2D vector form — was partly covered; now in *Spec completion — Mechanics: Topic 7 – Kinematics*
+- **M 7.5** Projectile motion under gravity: time of flight, range, greatest height, path equation — was partly covered; now in *Spec completion — Mechanics: Topic 7 – Kinematics*
+- **M 8.1** Concept of force and Newton's first law: reaction, tension, thrust, resistance — was partly covered; now in *Spec completion — Mechanics: Topic 8 – Forces and Newton's laws* · corrected by checker
+- **M 9.1** Moments for rigid bodies in equilibrium with parallel and non-parallel forces, e.g. ladders — was partly covered; now in *Spec completion — Mechanics: Topic 9 – Moments*
